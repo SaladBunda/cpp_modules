@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 19:08:46 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/09/01 16:06:16 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/09/02 16:27:27 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Contact::Contact(void)
 {
-    this->number = 0;
+    this->number = "";
     this->first_name="";
     this->last_name="";
     this->nickname="";

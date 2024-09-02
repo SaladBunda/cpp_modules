@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 16:40:18 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/08/31 20:45:13 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/09/02 16:06:04 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Contact
     std::string first_name;
     std::string last_name;
     std::string nickname;
-    size_t number;
+    std::string number;
     std::string darkest_secret;
 };
 
