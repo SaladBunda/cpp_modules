@@ -19,6 +19,7 @@ Contact::Contact(void)
     this->last_name="";
     this->nickname="";
     this->darkest_secret="";
+    this->index = 1;
     // std::cout << "created a contact" << std::endl;
     return;
 }

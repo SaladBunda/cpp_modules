@@ -14,8 +14,8 @@
 
 Phonebook::Phonebook(void)
 {
-    this->num = 0;
     this->current = 0;
+    this->num = 0;
     return;
 }
 
@@ -141,9 +141,97 @@ void Phonebook::add_contact(void)
                 i++;
             }
         }
-        
-        
     }
+    this->contacts[this->current % 8].index = (this->current % 8) + 1;
     this->current++;
-    std::cout << this->current << std::endl;
+    if(this->num < 8)
+        this->num++;
+    std::cout << "Contact added successfully" << std::endl;
+}
+
+void Phonebook::search_contact(void)
+{
+    int i = 0;
+    while(i < this->num)
+    {
+        std::cout << "*********************************************" << std::endl << "*";
+        for(int j = 0;j < 10;j++)
+        {
+            
+            std::cout << this->contacts[i].index;
+            j++;
+             while(j < 10)
+             {
+                    std::cout <<' ';
+                    j++;
+             }
+            std::cout<<"|";
+        }
+        for(int j = 0;j < 10;j++)
+        {
+            if(this->contacts[i].first_name.length() > 10)
+            {
+                while(j < 9)
+                    std::cout << this->contacts[i].first_name[j++];
+                std::cout<<".";
+            }
+            else
+            {
+
+                while(this->contacts[i].first_name[j])
+                    std::cout << this->contacts[i].first_name[j++];
+                while(j < 10)
+                {
+                    std::cout <<' ';
+                    j++;
+                }
+            }
+            std::cout<<"|";
+        }
+        for(int j = 0;j < 10;j++)
+        {
+            if(this->contacts[i].last_name.length() > 10)
+            {
+                while(j < 9)
+                    std::cout << this->contacts[i].last_name[j++];
+                std::cout<<".";
+            }
+            else
+            {
+
+                while(this->contacts[i].last_name[j])
+                    std::cout << this->contacts[i].last_name[j++];
+                while(j < 10)
+                {
+                    std::cout <<' ';
+                    j++;
+                }
+            }
+            std::cout<<"|";
+        }
+        for(int j = 0;j < 10;j++)
+        {
+            if(this->contacts[i].nickname.length() > 10)
+            {
+                while(j < 9)
+                    std::cout << this->contacts[i].nickname[j++];
+                std::cout<<".";
+            }
+            else
+            {
+
+                while(this->contacts[i].nickname[j])
+                    std::cout << this->contacts[i].nickname[j++];
+                while(j < 10)
+                {
+                    std::cout <<' ';
+                    j++;
+                }
+            }
+            std::cout<<"*"<<std::endl;
+        }
+        i++;
+    }
+    std::cout << "*********************************************"<<std::endl;
+
 }

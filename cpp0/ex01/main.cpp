@@ -26,7 +26,7 @@ int main()
         else if(line == "EXIT")
             std::cout << "fuck off" << std::endl;
         else if(line == "SEARCH")
-            std::cout<< "look for it urself" << std::endl;  
+            start.search_contact();  
     }
     return 0;
 }
