@@ -151,6 +151,7 @@ void Phonebook::add_contact(void)
 
 void Phonebook::search_contact(void)
 {
+    std::string result;
     if(this->current == 0)
     {
         std::cout << "There is no contacts saved, try ADD to add contacts to the phonebook" << std::endl;
@@ -239,5 +240,11 @@ void Phonebook::search_contact(void)
         i++;
     }
     std::cout << "*********************************************"<<std::endl;
+    std::cout << "Pick a contact using the indexes: ";
+    std::getline(std::cin, result);
+    if(result.length() == 1)
+    {
+        std::cout << "1" <<std::endl;
+    }
 
 }
