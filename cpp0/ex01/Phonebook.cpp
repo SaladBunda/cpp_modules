@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 19:19:47 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/09/02 16:35:14 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/09/05 14:24:24 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,22 +240,44 @@ void Phonebook::search_contact(void)
         i++;
     }
     std::cout << "*********************************************"<<std::endl;
-    std::cout << "Pick a contact using the indexes: ";
-    std::getline(std::cin, result);
+    int error =0;
     int number;
-    if(result.length() == 1)
+    while(error == 0)
     {
-        if(result[0]>='1' && result[0]<='8')
+        std::cout << "Pick a contact using the indexes: ";
+        std::getline(std::cin, result);
+        if(std::cin.eof() == true)
+            return ;
+        if(result.length() == 1)
         {
-            number = result[0] - '0';
-            std::cout << number <<std::endl;
+            if(result[0]>='1' && result[0]<='8')
+            {
+                number = result[0] - '0';
+                std::cout << number <<std::endl;
+                if(number > this->current)
+                {
+                    std::cout<< "current: " << this->current <<std::endl;
+                    continue;
+                }
+                else
+                {
+                    std::cout << "First name: " <<this->contacts[number -1 ].first_name <<std::endl;
+                    std::cout << "Last name: " <<this->contacts[number -1].last_name <<std::endl;
+                    std::cout << "Nickname: " <<this->contacts[number-1].nickname <<std::endl;
+                    std::cout << "Number: " <<this->contacts[number-1].number <<std::endl;
+                    std::cout << "Darkest secret: " <<this->contacts[number-1].darkest_secret <<std::endl;
+                }
+                
+                break;
+            }
+            else
+                std::cout << "Bad index" << std::endl;
         }
         else
-            std::cout
-    }
-    else
-    {
-        std::cout << "Bad index" << std::endl;
+        {
+            std::cout << "Bad index" << std::endl;
+        }
+        result.clear();
     }
 
 }
