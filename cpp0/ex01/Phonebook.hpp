@@ -6,14 +6,16 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 16:39:22 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/09/02 15:45:35 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/09/05 19:21:40 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
-
-# include "main.hpp"
+# include <iostream>
+# include <string>
+# include <iomanip>
+# include "Contact.hpp"
 
 class Phonebook 
 {

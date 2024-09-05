@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.cpp                                        :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/31 19:08:46 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/09/05 19:21:05 by ael-maaz         ###   ########.fr       */
+/*   Created: 2024/09/05 19:24:37 by ael-maaz          #+#    #+#             */
+/*   Updated: 2024/09/05 20:29:57 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
+#include "Zombie.hpp"
 
-Contact::Contact(void)
+int main()
 {
-    this->number = "";
-    this->first_name="";
-    this->last_name="";
-    this->nickname="";
-    this->darkest_secret="";
-    this->index = 1;
-    // std::cout << "created a contact" << std::endl;
-    return;
-}
-
-Contact::~Contact(void)
-{
-    // std::cout << "done" << std::endl;
-    return;
+    Zombie *zom = newZombie("bunda");
+    (void) zom;
+    
+    
 }

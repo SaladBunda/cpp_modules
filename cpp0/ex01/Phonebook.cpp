@@ -6,11 +6,11 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 19:19:47 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/09/05 16:11:18 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/09/05 19:22:57 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+#include "Phonebook.hpp"
 
 Phonebook::Phonebook(void)
 {
@@ -158,7 +158,7 @@ void Phonebook::search_contact(void)
         return ;
     }
     int i = 0;
-    std::cout << "*********************************************" << std::endl << "*     index|first name| last name|  nickname*"<<std::endl;
+    std::cout << "*********************************************" << std::endl << "*     Index|First name| Last name|  Nickname*"<<std::endl;
     while(i < this->num)
     {
         std::cout << "*********************************************" << std::endl << "*";
@@ -180,20 +180,8 @@ void Phonebook::search_contact(void)
                 std::cout<<".";
             }
             else
-            {
                 std::cout << std::right << std::setw(10) << this->contacts[i].first_name;
-                // while(this->contacts[i].first_name[j])
-                //     std::cout << this->contacts[i].first_name[j++];
-                // while(j < 10)
-                // {
-                //     std::cout <<' ';
-                //     j++;
-                // }
-            }
             std::cout<<"|";
-        // }
-        // for(int j = 0;j < 10;j++)
-        // {
             if(this->contacts[i].last_name.length() > 10)
             {
                 int j = 0;
@@ -202,20 +190,8 @@ void Phonebook::search_contact(void)
                 std::cout<<".";
             }
             else
-            {
                 std::cout << std::right << std::setw(10) << this->contacts[i].last_name;
-                // while(this->contacts[i].last_name[j])
-                //     std::cout << this->contacts[i].last_name[j++];
-                // while(j < 10)
-                // {
-                //     std::cout <<' ';
-                //     j++;
-                // }
-            }
             std::cout<<"|";
-        // }
-        // for(int j = 0;j < 10;j++)
-        // {
             if(this->contacts[i].nickname.length() > 10)
             {
                 int j = 0;
@@ -224,18 +200,8 @@ void Phonebook::search_contact(void)
                 std::cout<<".";
             }
             else
-            {
                 std::cout << std::right << std::setw(10) << this->contacts[i].nickname;
-                // while(this->contacts[i].nickname[j])
-                //     std::cout << this->contacts[i].nickname[j++];
-                // while(j < 10)
-                // {
-                //     std::cout <<' ';
-                //     j++;
-                // }
-            }
             std::cout<<"*"<<std::endl;
-        // }
         i++;
     }
     std::cout << "*********************************************"<<std::endl;

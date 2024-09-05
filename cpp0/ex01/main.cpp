@@ -6,13 +6,13 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 19:28:11 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/09/05 15:14:58 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/09/05 19:22:14 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+#include "Phonebook.hpp"
 
-int main()
+int main(void)
 {
     Phonebook start;
     std::string line;
