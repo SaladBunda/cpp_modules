@@ -242,9 +242,20 @@ void Phonebook::search_contact(void)
     std::cout << "*********************************************"<<std::endl;
     std::cout << "Pick a contact using the indexes: ";
     std::getline(std::cin, result);
+    int number;
     if(result.length() == 1)
     {
-        std::cout << "1" <<std::endl;
+        if(result[0]>='1' && result[0]<='8')
+        {
+            number = result[0] - '0';
+            std::cout << number <<std::endl;
+        }
+        else
+            std::cout
+    }
+    else
+    {
+        std::cout << "Bad index" << std::endl;
     }
 
 }

@@ -35,8 +35,6 @@ int main(int ac, char **av)
             j++;
         }
         std::cout << arg ;
-        if(i != ac -1)
-            std::cout << " ";
         i++;
     }
     std::cout << std::endl;
