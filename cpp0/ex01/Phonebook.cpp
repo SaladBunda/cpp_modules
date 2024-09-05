@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 19:19:47 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/09/05 14:24:24 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/09/05 16:11:18 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,85 +158,84 @@ void Phonebook::search_contact(void)
         return ;
     }
     int i = 0;
-    std::cout << "*********************************************" << std::endl << "*index     |first name|last name |nickname  *"<<std::endl;
+    std::cout << "*********************************************" << std::endl << "*     index|first name| last name|  nickname*"<<std::endl;
     while(i < this->num)
     {
         std::cout << "*********************************************" << std::endl << "*";
         for(int j = 0;j < 10;j++)
         {
-            
+            while(j < 9)
+            {
+                std::cout <<' ';
+                j++;
+            }
             std::cout << this->contacts[i].index;
-            j++;
-             while(j < 10)
-             {
-                    std::cout <<' ';
-                    j++;
-             }
             std::cout<<"|";
         }
-        for(int j = 0;j < 10;j++)
-        {
             if(this->contacts[i].first_name.length() > 10)
             {
+                int j = 0;
                 while(j < 9)
                     std::cout << this->contacts[i].first_name[j++];
                 std::cout<<".";
             }
             else
             {
-
-                while(this->contacts[i].first_name[j])
-                    std::cout << this->contacts[i].first_name[j++];
-                while(j < 10)
-                {
-                    std::cout <<' ';
-                    j++;
-                }
+                std::cout << std::right << std::setw(10) << this->contacts[i].first_name;
+                // while(this->contacts[i].first_name[j])
+                //     std::cout << this->contacts[i].first_name[j++];
+                // while(j < 10)
+                // {
+                //     std::cout <<' ';
+                //     j++;
+                // }
             }
             std::cout<<"|";
-        }
-        for(int j = 0;j < 10;j++)
-        {
+        // }
+        // for(int j = 0;j < 10;j++)
+        // {
             if(this->contacts[i].last_name.length() > 10)
             {
+                int j = 0;
                 while(j < 9)
                     std::cout << this->contacts[i].last_name[j++];
                 std::cout<<".";
             }
             else
             {
-
-                while(this->contacts[i].last_name[j])
-                    std::cout << this->contacts[i].last_name[j++];
-                while(j < 10)
-                {
-                    std::cout <<' ';
-                    j++;
-                }
+                std::cout << std::right << std::setw(10) << this->contacts[i].last_name;
+                // while(this->contacts[i].last_name[j])
+                //     std::cout << this->contacts[i].last_name[j++];
+                // while(j < 10)
+                // {
+                //     std::cout <<' ';
+                //     j++;
+                // }
             }
             std::cout<<"|";
-        }
-        for(int j = 0;j < 10;j++)
-        {
+        // }
+        // for(int j = 0;j < 10;j++)
+        // {
             if(this->contacts[i].nickname.length() > 10)
             {
+                int j = 0;
                 while(j < 9)
                     std::cout << this->contacts[i].nickname[j++];
                 std::cout<<".";
             }
             else
             {
-
-                while(this->contacts[i].nickname[j])
-                    std::cout << this->contacts[i].nickname[j++];
-                while(j < 10)
-                {
-                    std::cout <<' ';
-                    j++;
-                }
+                std::cout << std::right << std::setw(10) << this->contacts[i].nickname;
+                // while(this->contacts[i].nickname[j])
+                //     std::cout << this->contacts[i].nickname[j++];
+                // while(j < 10)
+                // {
+                //     std::cout <<' ';
+                //     j++;
+                // }
             }
             std::cout<<"*"<<std::endl;
-        }
+        // }
         i++;
     }
     std::cout << "*********************************************"<<std::endl;
@@ -253,10 +252,9 @@ void Phonebook::search_contact(void)
             if(result[0]>='1' && result[0]<='8')
             {
                 number = result[0] - '0';
-                std::cout << number <<std::endl;
                 if(number > this->current)
                 {
-                    std::cout<< "current: " << this->current <<std::endl;
+                    std::cout << "Bad index" << std::endl;
                     continue;
                 }
                 else
