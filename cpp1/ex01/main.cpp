@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 19:24:37 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/09/06 11:19:00 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/09/06 11:19:06 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int main()
 {
-    Zombie *zom = newZombie("bundaaaaa");
-    zom->announce();
-    randomChump("gayfucker");
-    delete zom;
+    Zombie *array = zombieHorde(10, NULL);
+    for(int i = 0;i < 10;i++)
+        array->announce();
+    
+    delete[] array;
 }
