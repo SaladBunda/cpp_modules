@@ -6,12 +6,15 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 19:26:18 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/09/06 19:59:00 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/09/07 11:36:18 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
+
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
+# include <iostream>
+# include <string>
 
 class Weapon
 {
@@ -23,4 +26,6 @@ class Weapon
         ~Weapon(void);
         const std::string &getType(void);
         void setType(std::string type);
-}
+};
+
+#endif

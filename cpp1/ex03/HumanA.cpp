@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/06 19:26:15 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/09/07 11:34:59 by ael-maaz         ###   ########.fr       */
+/*   Created: 2024/09/07 11:44:12 by ael-maaz          #+#    #+#             */
+/*   Updated: 2024/09/07 11:55:12 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#include "HumanA.hpp"
 
-Weapon::Weapon(void)
+HumanA::HumanA(std::string name, Weapon weapon)
 {
-    return ;
+    this->name = name;
+    this->weapon = weapon;
+    return;
 }
 
-Weapon::~Weapon(void)
+HumanA::~HumanA(void)
 {
-    return ;
+
+    return;
 }
 
-void Weapon::setType(std::string type)
+void HumanA::attack(void)
 {
-    this->type = type;
-}
-
-const std::string &Weapon::getType(void)
-{
-    const std::string &typeREF = this->type;
-    return typeREF;
+    std::cout << this->name << " attacks with their " <<this->weapon<<std::endl;
 }
