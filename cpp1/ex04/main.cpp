@@ -6,13 +6,51 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:21:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/09/09 12:22:56 by codespace        ###   ########.fr       */
+/*   Updated: 2024/09/09 21:49:27 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Sed.hpp"
 
-int main()
+int main(int ac, char **av)
 {
-    
+    if(ac == 4)
+    {
+        (void) av;
+        std::string buffer;
+        std::ifstream input(av[1]);
+        if(input.is_open() == false)
+        {
+            std::cout << "Failed to open file" << std::endl;
+            return 1;
+        }
+        int i =0;
+        int j = 0;
+        std::ofstream out("result.txt");
+        while(std::getline(input,buffer))
+        {
+            i = 0;
+            while(buffer[i])
+            {
+                j = 0;
+                if(buffer[i] == av[2][j])
+                {
+                    while(buffer[i] && av[2][j] && buffer[i] == av[2][j])
+                    {
+                        j++;
+                        i++;
+                    }
+                    if(av[2][j] == '\0')
+                        out << av[3];
+                }
+                else
+                    out << buffer[i];
+                i++;
+            }
+            // std::cout << buffer << std::endl;
+            out << std::endl;
+        }
+    }
+    else
+        std::cout << "Usage: ./sed <filename> <s1> <s2>" << std:: endl;
 }
