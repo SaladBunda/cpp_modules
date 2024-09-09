@@ -22,9 +22,9 @@ HumanB::~HumanB(void)
     return;
 }
 
-void HumanB::setWeapon(Weapon &weapon)
+void HumanB::setWeapon(Weapon *weapon)
 {
-    this->weapon = &weapon;
+    this->weapon = weapon;
 }
 
 void HumanB::attack(void)
