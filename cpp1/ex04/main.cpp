@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:21:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/09/09 21:49:27 by codespace        ###   ########.fr       */
+/*   Updated: 2024/09/09 23:08:13 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int main(int ac, char **av)
         }
         int i =0;
         int j = 0;
+        int tmp;
         std::ofstream out("result.txt");
         while(std::getline(input,buffer))
         {
@@ -35,13 +36,24 @@ int main(int ac, char **av)
                 j = 0;
                 if(buffer[i] == av[2][j])
                 {
+                    tmp = i;
                     while(buffer[i] && av[2][j] && buffer[i] == av[2][j])
                     {
                         j++;
                         i++;
                     }
                     if(av[2][j] == '\0')
+                    {
                         out << av[3];
+                        continue;   
+                    }
+                    else 
+                    {
+                        i=tmp;
+                      out << buffer[i];
+                      i++;
+                      continue;
+                    }
                 }
                 else
                     out << buffer[i];
