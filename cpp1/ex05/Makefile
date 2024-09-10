@@ -1,8 +1,8 @@
-SRCS = main.cpp
+SRCS = main.cpp Harl.cpp
 OBJS = $(SRCS:.cpp=.o)
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = sed
+NAME = harl
 
 all: $(NAME)
 
