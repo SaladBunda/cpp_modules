@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 12:01:42 by codespace         #+#    #+#             */
-/*   Updated: 2024/09/10 14:44:00 by codespace        ###   ########.fr       */
+/*   Updated: 2024/09/13 12:39:45 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,18 @@ void Harl::error(void)
     std::cout <<  "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
+void Harl::other(void)
+{
+    std::cout <<  "* complaining about random stuff *" << std::endl;
+}
+
 void Harl::complain(std::string level)
 {
     Harl obj;
-    void (Harl::*pointer[])()={&Harl::debug, &Harl::info,&Harl::warning,&Harl::error};
+    void (Harl::*pointer[])()={&Harl::debug, &Harl::info,&Harl::warning,&Harl::error, &Harl::other};
     std::string option[] = {"DEBUG","INFO", "WARNING", "ERROR"};
     int i = 0;
-    while(i<4)
-    {
-        if(option[i] == level)
-        {
-            (obj.*pointer[i])();
-            return;
-        }
+    while(level != option[i] && i<4)
         i++;
-    }
-    if(i>=4)
-        std::cout << "just complaining" << std::endl;  
-    
+    (obj.*pointer[i])();
 }

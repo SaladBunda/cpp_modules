@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:51:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/09/12 17:00:35 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/09/12 18:28:29 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,12 @@ Fixed::Fixed(int const integer)
 {
     this->decimal = integer << this->fract;
     std::cout << "Int constructor called" << std::endl;
-
 }
 
 
 Fixed::Fixed(float const fl)
 {
     this->decimal = roundf(fl * (1 << fract));
-    std::cout << "this is decimal: " << this->decimal<< std::endl;
     std::cout << "Float constructor called" << std::endl;
 
 }
@@ -160,7 +158,38 @@ float Fixed::toFloat(void) const
 int Fixed::toInt(void) const {
     return this->decimal >> fract;  
 }
+//min and max functions
+Fixed & Fixed::min(Fixed & number1, Fixed & number2)
+{
+    if(number1 > number2)
+        return number2;
+    else
+        return number1;
+}
 
+Fixed & Fixed::max(Fixed & number1, Fixed & number2)
+{
+    if(number1 > number2)
+        return number1;
+    else
+        return number2;
+}
+
+Fixed const & Fixed::min(Fixed const & number1, Fixed const & number2)
+{
+    if(number1 > number2)
+        return number2;
+    else
+        return number1;
+}
+
+Fixed const & Fixed::max(Fixed const & number1, Fixed const & number2)
+{
+    if(number1 > number2)
+        return number1;
+    else
+        return number2;
+}
 
 // << operator overload
 std::ostream &operator<<(std::ostream & o, Fixed const &src)

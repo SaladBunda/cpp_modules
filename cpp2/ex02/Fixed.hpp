@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:34:21 by codespace         #+#    #+#             */
-/*   Updated: 2024/09/12 16:57:27 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/09/12 18:23:29 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ class Fixed
         Fixed operator++(int) ;
         Fixed & operator--(void);
         Fixed operator--(int) ;
+        static Fixed & min(Fixed & number1, Fixed & number2);
+        Fixed & max(Fixed & number1, Fixed & number2);
+        Fixed const & min(Fixed const & number1, Fixed const & number2);
+        Fixed const & max(Fixed const & number1, Fixed const & number2);
         int getRawBits( void ) const;
         void setRawBits( int const raw );
         float toFloat( void ) const;

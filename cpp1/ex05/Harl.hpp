@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 23:13:26 by codespace         #+#    #+#             */
-/*   Updated: 2024/09/10 13:33:21 by codespace        ###   ########.fr       */
+/*   Updated: 2024/09/13 12:37:33 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class Harl
         void info(void);
         void warning(void);
         void error(void);
+        void other(void);
     public:
         void complain(std::string level);
 };
