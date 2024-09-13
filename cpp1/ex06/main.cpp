@@ -6,18 +6,21 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:21:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/09/13 12:41:10 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/09/13 15:45:41 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-int main()
+int main(int ac, char **av)
 {
+   
    Harl john;
-   john.complain("DEBUG");
-   john.complain("INFO");
-   john.complain("WARNING");
-   john.complain("ERROR");
-   john.complain("budna gane");
+   if (ac == 1)
+   {
+      
+         std::cout << "complaining again" << std::endl;
+      return(1);
+   }
+   john.complain(av[1]);
 }

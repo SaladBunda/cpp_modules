@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 12:01:42 by codespace         #+#    #+#             */
-/*   Updated: 2024/09/13 12:39:45 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/09/13 15:47:31 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,20 @@ void Harl::complain(std::string level)
     int i = 0;
     while(level != option[i] && i<4)
         i++;
-    (obj.*pointer[i])();
+    switch (i)
+    {
+        case 0:
+            (obj.*pointer[i++])();
+        case 1:
+            (obj.*pointer[i++])();
+        case 2:
+            (obj.*pointer[i++])();
+        case 3:
+            (obj.*pointer[i++])();
+            break ;
+        default:
+            (obj.*pointer[i])();
+    }
+            
+            
 }
