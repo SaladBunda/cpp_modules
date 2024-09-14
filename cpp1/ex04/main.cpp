@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:21:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/09/11 18:57:43 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/09/14 16:41:35 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,51 +16,42 @@ int main(int ac, char **av)
 {
     if(ac == 4)
     {
-        (void) av;
         std::string buffer;
+        std::string to_find = av[2];
+        if(to_find.empty() == true)
+        {
+            std::cout << "needle cant be empty" << std::endl;
+            return 1;
+        }
         std::ifstream input(av[1]);
+        
+        std::string filename = av[1];
         if(input.is_open() == false)
         {
             std::cout << "Failed to open file" << std::endl;
             return 1;
         }
-        int i =0;
-        int j = 0;
-        int tmp;
-        std::ofstream out("result.replace");
+        size_t pos = 1;
+        std::ofstream out(filename += ".replace");
         while(std::getline(input,buffer))
         {
-            i = 0;
-            while(buffer[i])
+            pos = buffer.find(av[2]);
+            while(pos != std::string::npos)
             {
-                j = 0;
-                if(buffer[i] == av[2][j])
+                pos = buffer.find(av[2]);
+                if(pos == std::string::npos)
                 {
-                    tmp = i;
-                    while(buffer[i] && av[2][j] && buffer[i] == av[2][j])
-                    {
-                        j++;
-                        i++;
-                    }
-                    if(av[2][j] == '\0')
-                    {
-                        out << av[3];
-                        continue;   
-                    }
-                    else 
-                    {
-                        i=tmp;
-                      out << buffer[i];
-                      i++;
-                      continue;
-                    }
+                    std::cout << " no more needle" << std::endl;
+                    break;
                 }
-                else
-                    out << buffer[i];
-                i++;
+                std::cout << pos <<std::endl;
+                buffer.erase(pos,to_find.length());
+                buffer.insert(pos, av[3]);
             }
-            // std::cout << buffer << std::endl;
+            out << buffer;
             out << std::endl;
+            buffer.clear();
+                
         }
     }
     else
