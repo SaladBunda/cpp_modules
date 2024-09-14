@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/12 22:37:06 by codespace         #+#    #+#             */
-/*   Updated: 2024/09/14 13:15:38 by ael-maaz         ###   ########.fr       */
+/*   Created: 2024/09/13 19:52:16 by codespace         #+#    #+#             */
+/*   Updated: 2024/09/14 13:32:02 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
 
-int main()
+#include "ClapTrap.hpp"
+
+class FragTrap : public ClapTrap
 {
-    ScavTrap bot2("asshole");
-    bot2.attack("bro");
-    bot2.takeDamage(70);
-    bot2.takeDamage(29);
-    bot2.attack("someone");
-    bot2.beRepaired(200);
-    bot2.attack("someone");
-    bot2.gateGuard();
+    public:
+        FragTrap(void);
+        FragTrap(std::string name);
+        FragTrap(FragTrap const & src);
+        ~FragTrap(void);
+        FragTrap & operator=(FragTrap const & src);
+        void attack(const std::string & target);
+        void highFivesGuys(void);
+};
 
-    
-    return 0;
-}
+#endif
