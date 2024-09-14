@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 22:42:57 by codespace         #+#    #+#             */
-/*   Updated: 2024/09/13 19:32:45 by codespace        ###   ########.fr       */
+/*   Updated: 2024/09/13 20:20:22 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 class ClapTrap
 {
-    private:
+    protected:
         std::string name;
         unsigned int Hp;
         unsigned int Ep;

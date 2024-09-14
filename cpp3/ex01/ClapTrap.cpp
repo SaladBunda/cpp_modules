@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 22:49:26 by codespace         #+#    #+#             */
-/*   Updated: 2024/09/13 20:24:10 by codespace        ###   ########.fr       */
+/*   Updated: 2024/09/13 20:38:48 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ ClapTrap::ClapTrap(ClapTrap const & src)
 
 ClapTrap::~ClapTrap(void)
 {
-    std::cout << "Destructor called" << std::endl;
+    std::cout << "ClapTrap Destructor called" << std::endl;
     return ;
 }
 

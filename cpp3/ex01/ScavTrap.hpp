@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/12 22:37:06 by codespace         #+#    #+#             */
-/*   Updated: 2024/09/13 19:39:54 by codespace        ###   ########.fr       */
+/*   Created: 2024/09/13 19:52:16 by codespace         #+#    #+#             */
+/*   Updated: 2024/09/13 20:26:44 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
+
 #include "ClapTrap.hpp"
 
-int main()
+class ScavTrap : public ClapTrap
 {
-    ClapTrap bot("bunda");
-    for(int i = 0;i < 20;i++)
-        bot.attack("yassin");
-    bot.takeDamage(60);
-    bot.attack("bunda");
-    return 0;
-}
+    public:
+        ScavTrap(void);
+        ScavTrap(std::string name);
+        ScavTrap(ScavTrap const & src);
+        ~ScavTrap(void);
+        ScavTrap & operator=(ScavTrap const & src);
+        void attack(const std::string & target);
+        void gateGuard(void);
+};
+
+#endif
