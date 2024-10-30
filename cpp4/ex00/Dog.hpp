@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.cpp                                         :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/07 20:44:41 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/10/29 17:59:05 by ael-maaz         ###   ########.fr       */
+/*   Created: 2024/10/26 15:00:04 by ael-maaz          #+#    #+#             */
+/*   Updated: 2024/10/26 15:28:42 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanB.hpp"
+#ifndef DOG_HPP
+# define DOG_HPP
 
-HumanB::HumanB(std::string name) :name(name)
-{
-    return;
-}
 
-HumanB::~HumanB(void)
-{
-    return;
-}
+# include <iostream>
+# include <string>
+# include "Animal.hpp"
 
-void HumanB::setWeapon(Weapon &weapon)
+class Dog: public Animal
 {
-    this->weapon = &weapon;
-}
+    public:
+        Dog(void);
+        Dog(std::string type);
+        Dog(Dog const & src);
+        Dog & operator=(Dog const & src);
+        ~Dog(void);
+        void makeSound(void) const;  
+};
 
-void HumanB::attack(void)
-{
-    std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
-}
+#endif

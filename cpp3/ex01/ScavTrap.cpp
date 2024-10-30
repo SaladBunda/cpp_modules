@@ -6,13 +6,13 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 20:13:41 by codespace         #+#    #+#             */
-/*   Updated: 2024/09/14 13:15:06 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/10/27 12:09:32 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void)
+ScavTrap::ScavTrap(void): ClapTrap()
 {
     std::cout << "ScavTrap default constructor called" << std::endl;
     this->Ad= 20;
@@ -29,8 +29,9 @@ ScavTrap::ScavTrap(std::string name)
     this->Ep = 50;
 }
 
-ScavTrap::ScavTrap(ScavTrap const & src) : ClapTrap(src)
+ScavTrap::ScavTrap(ScavTrap const & src)
 {
+    
     std::cout << "ScavTrap copying constructor called" << std::endl;
     this->Ad= src.Ad;
     this->Hp = src.Hp;

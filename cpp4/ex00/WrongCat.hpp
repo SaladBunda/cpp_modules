@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.cpp                                         :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/07 20:44:41 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/10/29 17:59:05 by ael-maaz         ###   ########.fr       */
+/*   Created: 2024/10/26 16:13:43 by ael-maaz          #+#    #+#             */
+/*   Updated: 2024/10/26 16:19:32 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanB.hpp"
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
-HumanB::HumanB(std::string name) :name(name)
-{
-    return;
-}
 
-HumanB::~HumanB(void)
-{
-    return;
-}
+# include <iostream>
+# include <string>
+# include "WrongAnimal.hpp"
 
-void HumanB::setWeapon(Weapon &weapon)
+class WrongCat: public WrongAnimal
 {
-    this->weapon = &weapon;
-}
+    public:
+        WrongCat(void);
+        WrongCat(std::string type);
+        WrongCat(WrongCat const & src);
+        WrongCat & operator=(WrongCat const & src);
+        ~WrongCat(void);
+        void makeSound(void) const;  
+};
 
-void HumanB::attack(void)
-{
-    std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
-}
+#endif

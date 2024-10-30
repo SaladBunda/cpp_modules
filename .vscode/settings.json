@@ -125,6 +125,8 @@
     "numeric": "cpp",
     "random": "cpp",
     "fstream": "cpp",
-    "stack": "cpp"
+    "stack": "cpp",
+    "__functional_03": "cpp",
+    "filesystem": "cpp"
   }
 }

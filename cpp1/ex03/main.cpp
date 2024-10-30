@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 19:26:13 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/09/07 20:50:43 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/10/29 17:57:50 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main()
     Weapon revolver;
     HumanB nabil("nabil");
     revolver.setType("Revolver");
-    nabil.setWeapon(revolver);
+    //nabil.setWeapon(revolver);
     nabil.attack();
     revolver.setType("Desert Eagle");
     nabil.attack();

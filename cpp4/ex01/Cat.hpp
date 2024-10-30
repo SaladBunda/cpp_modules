@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.cpp                                         :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/07 20:44:41 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/10/29 17:59:05 by ael-maaz         ###   ########.fr       */
+/*   Created: 2024/10/26 12:33:07 by ael-maaz          #+#    #+#             */
+/*   Updated: 2024/10/27 11:45:44 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanB.hpp"
+#ifndef CAT_HPP
+# define CAT_HPP
 
-HumanB::HumanB(std::string name) :name(name)
-{
-    return;
-}
 
-HumanB::~HumanB(void)
-{
-    return;
-}
+# include <iostream>
+# include <string>
+# include "Animal.hpp"
+# include "Brain.hpp"
 
-void HumanB::setWeapon(Weapon &weapon)
+class Cat: public Animal
 {
-    this->weapon = &weapon;
-}
+    private:
+        Brain *brain;
+    public:
+        Cat(void);
+        Cat(std::string type);
+        Cat(Cat const & src);
+        Cat & operator=(Cat const & src);
+        ~Cat(void);
+        void makeSound(void) const;  
+};
 
-void HumanB::attack(void)
-{
-    std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
-}
+#endif

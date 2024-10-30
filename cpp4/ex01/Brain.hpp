@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.cpp                                         :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/07 20:44:41 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/10/29 17:59:05 by ael-maaz         ###   ########.fr       */
+/*   Created: 2024/10/26 17:04:13 by ael-maaz          #+#    #+#             */
+/*   Updated: 2024/10/26 17:51:32 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanB.hpp"
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
-HumanB::HumanB(std::string name) :name(name)
-{
-    return;
-}
+#include <iostream>
+#include <string>
 
-HumanB::~HumanB(void)
+class Brain
 {
-    return;
-}
+	private:
+		std::string ideas[100];
+	public:
+		Brain(void);
+		Brain(Brain const & src);
+		Brain & operator=(Brain const & src);
+		~Brain(void);
+};
 
-void HumanB::setWeapon(Weapon &weapon)
-{
-    this->weapon = &weapon;
-}
 
-void HumanB::attack(void)
-{
-    std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
-}
+#endif

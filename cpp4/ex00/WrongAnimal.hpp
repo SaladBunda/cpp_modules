@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/31 16:40:18 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/09/22 11:10:39 by ael-maaz         ###   ########.fr       */
+/*   Created: 2024/10/26 15:21:33 by ael-maaz          #+#    #+#             */
+/*   Updated: 2024/10/26 16:20:34 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
 # include <iostream>
 # include <string>
-# include <iomanip>
 
-class Contact
+class WrongAnimal
 {
+    protected:
+        std::string type;
     public:
-    Contact(void);
-    ~Contact(void);
-    std::string first_name;
-    std::string last_name;
-    std::string nickname;
-    std::string number;
-    std::string darkest_secret;
-    int index;
+        WrongAnimal(void);
+        WrongAnimal(std::string type);
+        WrongAnimal(WrongAnimal const & src);
+        WrongAnimal & operator=(WrongAnimal const & src);
+        virtual ~WrongAnimal(void);
+        std::string getType(void) const;
+        void makeSound(void) const;  
 };
-
-
-
 #endif

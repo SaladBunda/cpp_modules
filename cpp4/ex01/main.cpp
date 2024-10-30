@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/07 20:44:41 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/10/29 17:59:05 by ael-maaz         ###   ########.fr       */
+/*   Created: 2024/10/26 12:26:21 by ael-maaz          #+#    #+#             */
+/*   Updated: 2024/10/27 20:37:58 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanB.hpp"
+// #include "Animal.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
+#include "WrongCat.hpp"
 
-HumanB::HumanB(std::string name) :name(name)
+void ll()
 {
-    return;
+    system("leaks brain");
 }
 
-HumanB::~HumanB(void)
+int main()
 {
-    return;
-}
-
-void HumanB::setWeapon(Weapon &weapon)
-{
-    this->weapon = &weapon;
-}
-
-void HumanB::attack(void)
-{
-    std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
+    //atexit(ll);
+    const Animal* j = new Dog();
+    const Animal* i = new Cat();
+    Animal *animals = new Animal[100];
+    
+    //delete j;//should not create a leak
+    //delete i;
+    i->makeSound();
+    j->makeSound();
+    delete i;
+    delete j;
+    return 0;
 }
