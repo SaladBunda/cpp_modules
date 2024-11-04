@@ -6,39 +6,45 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:26:21 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/11/03 13:15:03 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/10/30 21:33:45 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "Animal.hpp"
+// #include "AAnimal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "WrongCat.hpp"
+
 void ll()
 {
-    system("leaks animals");
+    system("leaks brain");
 }
 
 int main()
 {
     atexit(ll);
-    // const Animal* meta = new Animal();
-    // const Animal* j = new Dog();
-    // const Animal* i = new Cat();
-    // std::cout << j->getType() << " " << std::endl;
-    // std::cout << i->getType() << " " << std::endl;
-    // i->makeSound(); //will output the cat sound!
-    // j->makeSound();
-    // meta->makeSound();
-    const WrongAnimal* meta = new WrongAnimal();
-    const WrongAnimal* i = new WrongCat();
-    // std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
-    i->makeSound(); //will output the cat sound!
-    // j->makeSound();
-    meta->makeSound();
+    //const AAnimal* j = new Dog();
+    //const AAnimal* i = new Cat();
+    AAnimal **AAnimals = new AAnimal*[100];
+    for (int i = 0; i < 50; i++)
+    {
+        AAnimals[i] = new Dog();
+        AAnimals[i + 50] = new Cat();
+    }
+    for (int i = 0; i < 100; i++)
+    {
+        AAnimals[i]->makeSound();
+    }
+    for(int i = 0; i < 100; i++)
+    {
+        delete AAnimals[i];
+    }
+    delete[] AAnimals;
+    //delete j;//should not create a leak
+    //delete i;
+    //i->makeSound();
+    //j->makeSound();
+    //delete i;
     //delete j;
-    delete i;
-    delete meta;
     return 0;
 }

@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/26 11:20:46 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/10/30 22:25:35 by ael-maaz         ###   ########.fr       */
+/*   Created: 2024/10/26 15:00:04 by ael-maaz          #+#    #+#             */
+/*   Updated: 2024/10/30 21:26:02 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef DOG_HPP
+# define DOG_HPP
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
 
 # include <iostream>
 # include <string>
+# include "AAnimal.hpp"
+# include "Brain.hpp"
 
-class Animal
+class Dog: public AAnimal
 {
-    protected:
-        std::string type;
+    private:
+        Brain *brain;
     public:
-        Animal(void);
-        Animal(std::string type);
-        Animal(Animal const & src);
-        Animal & operator=(Animal const & src);
-        virtual ~Animal(void);
-        std::string getType(void) const;
-        virtual void makeSound(void) const;  
+        Dog(void);
+        Dog(std::string type);
+        Dog(Dog const & src);
+        Dog & operator=(Dog const & src);
+        ~Dog(void);
+        void makeSound(void) const;  
 };
+
 #endif

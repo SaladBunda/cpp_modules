@@ -6,28 +6,28 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 11:20:46 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/10/30 22:25:35 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/10/30 21:25:18 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef AANIMAL_HPP
+# define AANIMAL_HPP
 
 # include <iostream>
 # include <string>
 
-class Animal
+class AAnimal
 {
     protected:
         std::string type;
     public:
-        Animal(void);
-        Animal(std::string type);
-        Animal(Animal const & src);
-        Animal & operator=(Animal const & src);
-        virtual ~Animal(void);
+        AAnimal(void);
+        AAnimal(std::string type);
+        AAnimal(AAnimal const & src);
+        AAnimal & operator=(AAnimal const & src);
+        virtual ~AAnimal(void);
         std::string getType(void) const;
-        virtual void makeSound(void) const;  
+        virtual void makeSound(void) const = 0;  
 };
 #endif

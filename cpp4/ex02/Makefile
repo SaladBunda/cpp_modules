@@ -1,19 +1,15 @@
-SRCS = Contact.cpp Phonebook.cpp main.cpp
+SRCS = main.cpp AAnimal.cpp Cat.cpp Dog.cpp WrongCat.cpp WrongAnimal.cpp Brain.cpp
 OBJS = $(SRCS:.cpp=.o)
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = phonebook
+NAME = ex2
 
 all: $(NAME)
-
-bonus: $(BONUS_NAME)
-
-
 
 $(NAME): $(OBJS) 
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.cpp Contact.hpp Phonebook.hpp
+%.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

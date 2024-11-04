@@ -6,9 +6,11 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:21:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/09/14 16:41:35 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:32:32 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "Sed.hpp"
 
 #include "Sed.hpp"
 
@@ -32,7 +34,8 @@ int main(int ac, char **av)
             return 1;
         }
         size_t pos = 1;
-        std::ofstream out(filename += ".replace");
+        const char *filename2 = (filename += ".replace").c_str();
+        std::ofstream out(filename2);
         while(std::getline(input,buffer))
         {
             pos = buffer.find(av[2]);
@@ -41,10 +44,10 @@ int main(int ac, char **av)
                 pos = buffer.find(av[2]);
                 if(pos == std::string::npos)
                 {
-                    std::cout << " no more needle" << std::endl;
+                    //std::cout << " no more needle" << std::endl;
                     break;
                 }
-                std::cout << pos <<std::endl;
+                //std::cout << pos <<std::endl;
                 buffer.erase(pos,to_find.length());
                 buffer.insert(pos, av[3]);
             }
