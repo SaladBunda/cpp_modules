@@ -9,7 +9,7 @@ all: $(NAME)
 $(NAME): $(OBJS) 
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.cpp
+%.o: %.cpp HumanA.hpp HumanB.hpp Weapon.hpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

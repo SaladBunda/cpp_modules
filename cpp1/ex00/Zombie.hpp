@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 19:24:58 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/09/05 19:31:57 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/11/03 18:35:33 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 
 class Zombie
 {
-    public:
-    Zombie(std::string name);
-    ~Zombie(void);
-    void announce(void);
-
     private:
-    std::string name;
+    	std::string name;
+    public:
+    	Zombie(std::string name);
+    	~Zombie(void);
+    	void announce(void);
+
 };
 
 Zombie *newZombie(std::string name);

@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 19:24:58 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/09/06 11:05:47 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/11/03 19:31:02 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,11 @@
 #include <iostream>
 #include <string>
 
-
 class Zombie
 {
     private:
         std::string name;
-        
     public:
-        // Zombie(std::string name);
         Zombie(void);
         ~Zombie(void);
         void setName(std::string name);

@@ -9,9 +9,9 @@ all: $(NAME)
 $(NAME): $(OBJS) 
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.cpp
+%.o: %.cpp Sed.hpp
 	$(CC) $(CFLAGS) -c $< -o $@
-
+	
 clean:
 	rm -rf $(OBJS) 
 
