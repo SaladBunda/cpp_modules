@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:21:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/11/04 15:32:32 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:34:50 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,7 @@ int main(int ac, char **av)
             {
                 pos = buffer.find(av[2]);
                 if(pos == std::string::npos)
-                {
-                    //std::cout << " no more needle" << std::endl;
                     break;
-                }
-                //std::cout << pos <<std::endl;
                 buffer.erase(pos,to_find.length());
                 buffer.insert(pos, av[3]);
             }
