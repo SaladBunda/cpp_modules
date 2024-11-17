@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 22:49:26 by codespace         #+#    #+#             */
-/*   Updated: 2024/09/13 20:24:10 by codespace        ###   ########.fr       */
+/*   Updated: 2024/11/17 19:43:40 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ ClapTrap & ClapTrap::operator=(ClapTrap const & src)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    if(this->Hp)
+    if(this->Hp > 0)
     {
         if(amount > this->Hp)
             this->Hp = 0;
         else
             this->Hp -= amount; 
-        std::cout << "Took " << amount << " of damage!!" << std::endl;  
+        std::cout << this->name <<" took " << amount << " points of damage!!" << std::endl;  
     }
     else
         std::cout << "Cant take damage cuz it dead alr" << std::endl;
@@ -84,9 +84,10 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
     if(this->Hp > 0 && this->Ep > 0)
     {
+        this->Ep--;
         this->Hp += amount;
+        std::cout << this->name << " has been repaired for " << amount << " points of health!" << std::endl;
     }
     else
-        std::cout << "Unable to attack" << std::endl;
-
+        std::cout << "Unable to be repaired" << std::endl;
 }

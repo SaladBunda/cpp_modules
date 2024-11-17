@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 22:49:26 by codespace         #+#    #+#             */
-/*   Updated: 2024/10/27 12:07:56 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/11/17 19:43:25 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 ClapTrap::ClapTrap(void)
 {
     std::cout << "ClapTrap Default Contructor called" << std::endl;
+    this->name = "Clappy";
     this->Hp = 10;
     this->Ep = 10;
     this->Ad= 0;
@@ -32,7 +33,6 @@ ClapTrap::ClapTrap(std::string name)
 ClapTrap::ClapTrap(ClapTrap const & src)
 {
     std::cout << "ClapTrap Copy Contructor called" << std::endl;
-
     this->name = src.name;
     this->Ad = src.Ad;
     this->Hp = src.Hp;
@@ -56,13 +56,13 @@ ClapTrap & ClapTrap::operator=(ClapTrap const & src)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    if(this->Hp)
+    if(this->Hp > 0)
     {
         if(amount > this->Hp)
             this->Hp = 0;
         else
             this->Hp -= amount; 
-        std::cout << "Took " << amount << " of damage!!" << std::endl;  
+        std::cout << this->name <<" took " << amount << " points of damage!!" << std::endl;  
     }
     else
         std::cout << "Cant take damage cuz it dead alr" << std::endl;
@@ -86,8 +86,8 @@ void ClapTrap::beRepaired(unsigned int amount)
     {
         this->Ep--;
         this->Hp += amount;
-        std::cout << this->name << " repaired for: " << amount << std::endl;
+        std::cout << this->name << " has been repaired for " << amount << " points of health!" << std::endl;
     }
     else
-        std::cout << "Unable to repair" << std::endl;
+        std::cout << "Unable to be repaired" << std::endl;
 }

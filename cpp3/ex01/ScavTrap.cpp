@@ -6,15 +6,16 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 20:13:41 by codespace         #+#    #+#             */
-/*   Updated: 2024/10/27 12:09:32 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/11/17 19:33:23 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void): ClapTrap()
+ScavTrap::ScavTrap(void)
 {
     std::cout << "ScavTrap default constructor called" << std::endl;
+    this->name = "Scavvy";
     this->Ad= 20;
     this->Hp = 100;
     this->Ep = 50;
