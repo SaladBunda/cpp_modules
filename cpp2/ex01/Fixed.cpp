@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:51:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/09/10 22:49:15 by codespace        ###   ########.fr       */
+/*   Updated: 2024/11/16 17:25:27 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ Fixed::Fixed(int const integer)
 Fixed::Fixed(float const fl)
 {
     this->decimal = roundf(fl * (1 << fract));
-    std::cout << "this is decimal: " << this->decimal<< std::endl;
     std::cout << "Float constructor called" << std::endl;
 
 }
@@ -48,7 +47,8 @@ Fixed::~Fixed(void)
 Fixed & Fixed::operator=(Fixed const & src)
 {
     std::cout << "Copy assignement operator called" << std::endl;
-    this->decimal = src.getRawBits();
+    if(this != &src)
+        this->decimal = src.getRawBits();
     return *this;
 }
 
@@ -66,10 +66,6 @@ void Fixed::setRawBits(int const raw)
 
 float Fixed::toFloat(void) const 
 {
-    std::cout << "inside to float function: " << this->decimal<<std::endl;
-    std::cout << "float casting: " << (float)this->decimal <<std::endl;
-    std::cout << " 1 << fract: " << (1<< fract) << " float casted: "<<(float) (1 << fract) << std::endl;
-    std::cout << "final result: " << (float)this->decimal / (1 << fract) <<std::endl;
     return (float)this->decimal / (1 << fract);  
 }
 

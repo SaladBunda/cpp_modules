@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 22:49:26 by codespace         #+#    #+#             */
-/*   Updated: 2024/11/17 19:43:40 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/11/17 22:48:20 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 ClapTrap::ClapTrap(void)
 {
     std::cout << "ClapTrap Default Contructor called" << std::endl;
+    this->name = "Clappy";
     this->Hp = 10;
     this->Ep = 10;
     this->Ad= 0;
@@ -32,7 +33,6 @@ ClapTrap::ClapTrap(std::string name)
 ClapTrap::ClapTrap(ClapTrap const & src)
 {
     std::cout << "ClapTrap Copy Contructor called" << std::endl;
-
     this->name = src.name;
     this->Ad = src.Ad;
     this->Hp = src.Hp;

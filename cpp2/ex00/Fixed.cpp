@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:51:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/09/10 19:09:17 by codespace        ###   ########.fr       */
+/*   Updated: 2024/11/15 21:45:39 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ Fixed::Fixed(void)
     this->decimal = 0;
 }
 
-Fixed::Fixed(Fixed &copy)
+Fixed::Fixed(const Fixed &copy)
 {
     std::cout << "Copy constructor called" << std::endl;
-    *this = copy;
+    this->decimal = copy.decimal;
 }
 
 Fixed::~Fixed(void)
@@ -32,7 +32,8 @@ Fixed::~Fixed(void)
 Fixed & Fixed::operator=(Fixed & src)
 {
     std::cout << "Copy assignement operator called" << std::endl;
-    this->decimal = src.getRawBits();
+    if(this != &src)
+        this->decimal = src.getRawBits();
     return *this;
 }
 

@@ -2,14 +2,14 @@ SRCS = main.cpp Fixed.cpp
 OBJS = $(SRCS:.cpp=.o)
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = fixed2
+NAME = fixed3
 
 all: $(NAME)
 
 $(NAME): $(OBJS) 
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.cpp
+%.o: %.cpp Fixed.hpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

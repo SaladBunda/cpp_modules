@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:51:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/09/14 20:33:18 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/11/15 20:13:55 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ Fixed::~Fixed(void)
 Fixed & Fixed::operator=(Fixed const & src)
 {
     std::cout << "Copy assignement operator called" << std::endl;
-    this->decimal = src.getRawBits();
+    if(this != &src)
+        this->decimal = src.getRawBits();
     return *this;
 }
 //comparaison operators
@@ -131,7 +132,7 @@ Fixed Fixed::operator*(Fixed const & other) const
 Fixed Fixed::operator/(Fixed const & other) const
 {
     Fixed result;
-    result.setRawBits((this->getRawBits() / other.getRawBits())<<this->fract);
+    result.setRawBits((this->getRawBits()<<this->fract) / other.getRawBits());
     return result;
 }
 
@@ -152,7 +153,7 @@ void Fixed::setRawBits(int const raw)
 //functions to get either float representation or just int
 float Fixed::toFloat(void) const 
 {
-    return (float)this->decimal / (1 << fract);  
+    return (float)this->decimal / (1 << fract);
 }
 
 int Fixed::toInt(void) const {

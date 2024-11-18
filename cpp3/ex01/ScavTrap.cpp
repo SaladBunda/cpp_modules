@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 20:13:41 by codespace         #+#    #+#             */
-/*   Updated: 2024/11/17 19:33:23 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/11/17 22:46:58 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ ScavTrap::ScavTrap(ScavTrap const & src)
 {
     
     std::cout << "ScavTrap copying constructor called" << std::endl;
+    this->name = src.name;
     this->Ad= src.Ad;
     this->Hp = src.Hp;
     this->Ep = src.Ep;

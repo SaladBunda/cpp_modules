@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 22:49:26 by codespace         #+#    #+#             */
-/*   Updated: 2024/09/14 13:06:46 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/11/17 22:42:20 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ ClapTrap::ClapTrap(ClapTrap const & src)
 ClapTrap::~ClapTrap(void)
 {
     std::cout << "ClapTrap Destructor called" << std::endl;
-    return ;
 }
 
 ClapTrap & ClapTrap::operator=(ClapTrap const & src)
@@ -56,7 +55,7 @@ ClapTrap & ClapTrap::operator=(ClapTrap const & src)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    if(this->Hp)
+    if(this->Hp > 0)
     {
         if(amount > this->Hp)
             this->Hp = 0;
