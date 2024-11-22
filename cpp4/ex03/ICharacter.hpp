@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 22:22:46 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/11/20 22:31:39 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/11/22 17:13:25 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 
 class ICharacter
 {
-    private:
-        AMateria* _materias[4];
     public:
         virtual ~ICharacter() {}
         virtual std::string const & getName() const = 0;

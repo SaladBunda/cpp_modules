@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 22:12:55 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/11/20 22:30:07 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/11/22 17:08:16 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ std::string const & AMateria::getType() const {
 }
 
 void AMateria::use(ICharacter& target) {
-    (void)target;
+    std::cout << "AMateria use method called" << std::endl;
 }
 
