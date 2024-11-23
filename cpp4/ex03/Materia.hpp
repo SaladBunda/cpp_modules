@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:47:48 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/11/22 18:42:13 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/11/23 16:16:12 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class Materia : public AMateria
         Materia & operator=(Materia const & src);
         ~Materia();
         virtual AMateria* clone() const;
+		void setType(std::string & type);
         virtual void use(ICharacter& target);
 };
 

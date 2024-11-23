@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 22:51:23 by ael-maaz          #+#    #+#             */
-/*   Updated: 2024/11/22 17:38:30 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2024/11/23 17:13:54 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ Character::Character(Character const &character)
     {
         if(this->inventory[i])
             delete this->inventory[i];
-        this->inventory[i] = character.inventory[i].clone();
+        this->inventory[i] = character.inventory[i]->clone();
     }
 }
