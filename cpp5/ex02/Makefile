@@ -1,8 +1,8 @@
-SRCS = Form.cpp Bureaucrat.cpp main.cpp 
+SRCS = AForm.cpp Bureaucrat.cpp main.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 OBJS = $(SRCS:.cpp=.o)
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = forms
+NAME = moreforms
 
 all: $(NAME)
 

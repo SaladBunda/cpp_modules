@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 18:16:20 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/09 22:32:40 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/01/10 22:09:11 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,13 @@ Bureaucrat::Bureaucrat(void): name("default"), grade(75)
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 {
-	try
-	{
-		if(grade > 150)
-			throw GradeTooLowException();
-		else if(grade < 1)
-			throw GradeTooHighException();
-		else
-			this->grade = grade;
-	}
-	catch(GradeTooHighException e)
-	{
-		std::cout << e.TooHigh() << std::endl;
-	}
-	catch(GradeTooLowException e)
-	{
-		std::cout << e.TooLow() << std::endl;
-	}
+
+	if(grade > 150)
+		throw GradeTooLowException();
+	else if(grade < 1)
+		throw GradeTooHighException();
+	else
+		this->grade = grade;
 }
 
 Bureaucrat::~Bureaucrat()
@@ -73,39 +63,27 @@ std::string Bureaucrat::getName(void) const
 
 void Bureaucrat::Inc()
 {
-	try
+
+	if(this->grade > 1)
 	{
-		if(this->grade > 1)
-		{
-			this->grade--;
-			std::cout << "Here" << std::endl;
-		}
-		else
-		{
-			std::cout << "else" << std::endl;
-			throw GradeTooHighException();
-		}
+		this->grade--;
 	}
-	catch(GradeTooHighException e)
+	else
 	{
-		std::cout << "test" << std::endl;
-		std::cout << e.TooHigh() << std::endl;
+		throw GradeTooHighException();
 	}
+	
+
 }
 
 void Bureaucrat::Dec()
 {
-	try
-	{
-		if(this->grade < 150)
-			this->grade++;
-		else
-			throw GradeTooLowException();
-	}
-	catch(GradeTooLowException e)
-	{
-		std::cout << e.TooLow() << std::endl;
-	}
+	
+	if(this->grade < 150)
+		this->grade++;
+	else
+		throw GradeTooLowException();
+
 }
 
 std::ostream &operator<<(std::ostream& os, const Bureaucrat& crat)
@@ -114,18 +92,19 @@ std::ostream &operator<<(std::ostream& os, const Bureaucrat& crat)
 	return os;
 }
 
-void Bureaucrat::signForm(Form & form)
+void Bureaucrat::signForm(Form& form)
 {
 	
-	try
+
+	if(this->grade > form.getSignGrade())
 	{
-		if(this->grade > form.getSignGrade())
-			throw GradeTooLowException();
-		else
-			form.beSigned(*this);
+		std::cout << this->name << " couldn't sign " << form.getName() << " because: ";
+		throw GradeTooLowException();
 	}
-	catch(GradeTooLowException e)
+	else
 	{
-		std::cout << e.TooLow() << std::endl;
+		form.beSigned(*this);
+		std::cout << this->name << " signed " << form.getName() << std::endl;
 	}
+	
 }

@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:49:53 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/09 20:44:00 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/01/10 19:45:26 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Bureaucrat
 		class GradeTooHighException : public std::exception
 		{
 			public:
-				virtual const char* TooHigh() const throw()
+				const char* what() const throw()
 				{
 					return ("Grade is too high");
 				}
@@ -39,7 +39,7 @@ class Bureaucrat
 		class GradeTooLowException : public std::exception
 		{
 			public:
-				virtual const char* TooLow() const throw()
+				const char* what() const throw()
 				{
 					return ("Grade is too Low");
 				}

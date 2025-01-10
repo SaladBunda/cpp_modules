@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:49:53 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/10 20:30:47 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/01/10 22:36:07 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 #include <stdexcept>
 
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -54,7 +54,7 @@ class Bureaucrat
 		void Inc(void);
 		void Dec(void);
 		Bureaucrat const & operator=(Bureaucrat const & src);
-		void signForm(Form& form);
+		void signForm(AForm& form);
 };
 
 

@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 20:49:14 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/09 22:22:26 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/01/10 20:31:01 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,20 @@
 #include <stdexcept>
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form
 {
 	private:
 		const std::string name;
-		bool is_signed;
 		const int sign_grade;
 		const int exec_grade;
+		bool is_signed;
 	public:
 		class GradeTooHighException : public std::exception
 		{
 			public:
-				virtual const char* TooHigh() const throw()
+				const char* what() const throw()
 				{
 					return ("Grade is too high");
 				}
@@ -39,13 +41,13 @@ class Form
 		class GradeTooLowException : public std::exception
 		{
 			public:
-				virtual const char* TooLow() const throw()
+				const char* what() const throw()
 				{
 					return ("Grade is too Low");
 				}
 		};
 		Form(void);
-		Form(std::string name, int sign_grade, int exec_grade, bool signature);
+		Form(std::string name, int sign_grade, int exec_grade);
 		Form(Form const & src);
 		~Form(void);
 		int getSignGrade(void) const;
