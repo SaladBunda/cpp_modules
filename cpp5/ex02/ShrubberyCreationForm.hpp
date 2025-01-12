@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 22:41:46 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/10 23:37:18 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/01/12 21:27:36 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define SHRUBBERYCREATIONFORM_HPP
 
 #include "AForm.hpp"
+#include <fstream>
 
 class ShrubberyCreationForm : public AForm
 {

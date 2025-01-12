@@ -46,8 +46,14 @@ PresidentialPardonForm::~PresidentialPardonForm(void)
 	return ;
 }
 
-// std::ostream &operator<<(std::ostream& os, const ShrubberyCreationForm& form)
-// {
-// 	os << form.getName() << ", signing grade " << form.getSignGrade() << " and executing grade " << form.getExecGrade() << " signed status: " << form.getSignStatus() ;
-// 	return os;
-// }
+void PresidentialPardonForm::execute(Bureaucrat const & executor) const
+{
+	if(this->is_signed == false)
+		throw FormNotSigned();
+	else if(executor.getGrade() > this->exec_grade)
+		throw GradeTooLowException();
+	else
+	{
+		std::cout << this->target <<" has been pardoned by Zaphod Beeblebrox." << std::endl;
+	}
+}

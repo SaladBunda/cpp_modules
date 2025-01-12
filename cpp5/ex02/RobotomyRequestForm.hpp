@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 22:41:46 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/10 23:15:03 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/01/12 21:57:33 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #define ROBOTOMYREQUESTFORM_HPP
 
 #include "AForm.hpp"
+#include <fstream>
+#include <cstdlib> 
+#include <ctime> 
 
 class RobotomyRequestForm : public AForm
 {
@@ -25,6 +28,7 @@ class RobotomyRequestForm : public AForm
 		RobotomyRequestForm(RobotomyRequestForm const & src);
 		~RobotomyRequestForm(void);
 		RobotomyRequestForm const & operator=(RobotomyRequestForm const & src);
+		void execute(Bureaucrat const & executor) const;
 };
 
 

@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 22:41:46 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/10 23:17:05 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/01/12 21:47:30 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class PresidentialPardonForm : public AForm
 		PresidentialPardonForm(PresidentialPardonForm const & src);
 		~PresidentialPardonForm(void);
 		PresidentialPardonForm const & operator=(PresidentialPardonForm const & src);
+		void execute(Bureaucrat const & executor) const;
+
 };
 
 

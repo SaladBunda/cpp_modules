@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 20:49:14 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/10 23:37:13 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/01/12 23:00:11 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,14 @@ class AForm
 				const char* what() const throw()
 				{
 					return ("Grade is too Low");
+				}
+		};
+		class FormNotSigned : public std::exception
+		{
+			public:
+				const char* what() const throw()
+				{
+					return ("The form isnt signed");
 				}
 		};
 		AForm(void);

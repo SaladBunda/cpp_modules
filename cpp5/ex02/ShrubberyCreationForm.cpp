@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 21:12:20 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/10 23:40:16 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/01/12 23:04:02 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(void):AForm("ShrubberyCreationForm"
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target): AForm("ShrubberyCreationForm",145,137), target(target)
 {
+	std::cout << "Shrubbery form created" << std::endl;
 	return ;
 }
 
@@ -49,15 +50,27 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	if(this->is_signed == false)
-		throw "Form not signed";
+		throw FormNotSigned();
 	else if(executor.getGrade() > this->exec_grade)
 		throw GradeTooLowException();
 	else
-		std::ofstream outfile = ;
-}
+	{
+		std::string taget = this->target;
+		const char *filename2 = (taget += "_shrubbery").c_str();
+		std::ofstream outfile(filename2);
+		if(outfile.is_open() == false)
+       		throw "Failed to open file";
+		outfile << "      /\\      " << std::endl;
+        outfile << "     /\\*\\     " << std::endl;
+        outfile << "    /\\O\\*\\    " << std::endl;
+        outfile << "   /*/\\/\\/\\   " << std::endl;
+        outfile << "  /\\O\\/\\*\\/\\  " << std::endl;
+        outfile << " /\\*\\/\\*\\/\\/\\ " << std::endl;
+        outfile << "/\\O\\/\\/*/\\/O/\\" << std::endl;
+        outfile << "      ||      " << std::endl;
+        outfile << "      ||      " << std::endl;
+        outfile << "      ||      " << std::endl;
+        outfile.close();
 
-// std::ostream &operator<<(std::ostream& os, const ShrubberyCreationForm& form)
-// {
-// 	os << form.getName() << ", signing grade " << form.getSignGrade() << " and executing grade " << form.getExecGrade() << " signed status: " << form.getSignStatus() ;
-// 	return os;
-// }
+	}
+}

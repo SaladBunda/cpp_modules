@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:49:53 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/10 22:36:07 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/01/12 22:25:34 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ class Bureaucrat
 		void Dec(void);
 		Bureaucrat const & operator=(Bureaucrat const & src);
 		void signForm(AForm& form);
+		void executeForm(AForm const & form);
 };
 
 

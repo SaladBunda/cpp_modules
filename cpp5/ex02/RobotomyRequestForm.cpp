@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 21:12:20 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/10 23:27:29 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/01/12 23:06:05 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,25 @@ RobotomyRequestForm const & RobotomyRequestForm::operator=(RobotomyRequestForm c
 RobotomyRequestForm::~RobotomyRequestForm(void)
 {
 	return ;
+}
+
+void RobotomyRequestForm::execute(Bureaucrat const & executor) const
+{
+	if(this->is_signed == false)
+		throw FormNotSigned();
+	else if(executor.getGrade() > this->exec_grade)
+		throw GradeTooLowException();
+	else
+	{
+		std::cout << "Drilling noises..." << std::endl;
+		std::srand(std::time(nullptr));
+        int success = std::rand() % 2; // Generates 0 or 1 randomly
+
+        if (success) 
+            std::cout << this->target << " has been robotomized successfully!" << std::endl;
+        else 
+            std::cout << "The robotomy of " << this->target << " failed!" << std::endl;
+	}
 }
 
 // std::ostream &operator<<(std::ostream& os, const ShrubberyCreationForm& form)
