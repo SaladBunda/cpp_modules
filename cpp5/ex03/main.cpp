@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 19:49:22 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/13 11:39:23 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/01/19 23:12:58 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,18 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int main()
 {
 	try
 	{
 		Bureaucrat bunda("bunda",20);
-		AForm *form1 = new ShrubberyCreationForm("test");
+		Form *form1 = new ShrubberyCreationForm("test");
 		std::cout << "after creation" << std::endl;
 		form1->beSigned(bunda);
 		form1->execute(bunda);
-		AForm *form2 = new RobotomyRequestForm("dak zamel");
+		Form *form2 = new RobotomyRequestForm("dak zamel");
 		bunda.signForm(*form2);
 		bunda.executeForm(*form2);		
 		PresidentialPardonForm form3("Dean");
@@ -34,6 +35,11 @@ int main()
 		form3.beSigned(bunda);
 		form3.execute(bunda);
 		bunda.executeForm(form3);
+		Intern intern1;
+		Form* formtomake = intern1.makeForm("Robotomy form","zamel");
+		formtomake->beSigned(bunda);
+		formtomake->execute(bunda);
+		
 		
 	}
 	catch(std::exception & e)

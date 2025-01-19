@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:49:53 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/13 11:40:30 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/01/19 22:40:40 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 #include "Form.hpp"
 
-class AForm;
+class Form;
 
 class Bureaucrat
 {

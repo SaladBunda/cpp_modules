@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:10:16 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/13 14:40:24 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/01/19 23:12:25 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ Intern::Intern(void)
 
 Intern::Intern(Intern const & src)
 {
+	(void) src;
 	return ;
 }
 
 Intern const & Intern::operator=(Intern const & src)
 {
+	(void) src;
 	return *this;
 }
 
@@ -55,10 +57,14 @@ Form* Intern::createRobot(std::string target)
 Form* Intern::makeForm(std::string name, std::string target)
 {
 	Intern obj;
+	
     Form* (Intern::*pointer[])(std::string)={&Intern::createPresident, &Intern::createShrub,&Intern::createRobot};
     std::string option[] = {"Presidential pardon","Shrubbery form","Robotomy form"};
     int i = 0;
     while(name != option[i] && i<4)
         i++;
-    (obj.*pointer[i])(target);
+	if(i < 4)
+    	return (obj.*pointer[i])(target);
+	else
+		throw InvalidForm();
 }
