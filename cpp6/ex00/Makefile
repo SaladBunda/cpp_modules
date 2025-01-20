@@ -2,7 +2,7 @@ SRCS = ScalarConverter.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = interns
+NAME = convert
 
 all: $(NAME)
 
