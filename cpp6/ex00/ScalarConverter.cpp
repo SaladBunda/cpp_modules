@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:14:03 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/20 13:12:17 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:47:40 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,20 +77,41 @@ int	ft_atoi(char *s, int *error)
 }
 
 
-double testZero(std::string str)
-{
-	int i = 0;
-	while(str[i] && str[i] == '0')
-		i++;
-	if(str[i] == '.')
-		i++;
+// double testZero(std::string str)
+// {
+// 	int i = 0;
+// 	while(str[i] && str[i] == '0')
+// 		i++;
+// 	if(str[i] == '.')
+// 		i++;
 	
-}
+// }
 
+int pretest(std::string var)
+{
+	if(var == "nan" || var == "+inf" || var == "-inf")
+	{
+		std::cout << "char: impossible\nint: impossible" << std::endl;
+		std::cout << "float: " << var + "f"<< std::endl;
+		std::cout << "double: " << var<< std::endl;
+		return 0;
+	}
+	else if(var == "nanf" || var == "+inff" || var == "-inff")
+	{
+		std::cout << "char: impossible\nint: impossible" << std::endl;
+		std::cout << "float: " << var<< std::endl;
+		std::cout << "double: " << var.substr(0,var.length() - 1) << std::endl;
+		return 0;
+	}
+	else
+		return 1;
+}
 
 
 void ScalarConverter::convert(std::string var)
 {
+	if(pretest(var) == 0)
+		return ;
 	if(var.find('.') != var.npos)
 	{
 		std::string afterpoint = var.substr(var.find('.') + 1);
