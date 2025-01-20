@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 19:49:22 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/19 23:12:58 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/01/20 00:21:40 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int main()
 		form3.execute(bunda);
 		bunda.executeForm(form3);
 		Intern intern1;
-		Form* formtomake = intern1.makeForm("Robotomy form","zamel");
+		Form* formtomake = intern1.makeForm("Shrubbery form","zamel");
 		formtomake->beSigned(bunda);
 		formtomake->execute(bunda);
 		

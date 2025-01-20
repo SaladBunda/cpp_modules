@@ -1,12 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.cpp                                           :+:      :+:    :+:   */
+/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 09:45:36 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/13 09:45:37 by ael-maaz         ###   ########.fr       */
+/*   Created: 2025/01/20 02:10:27 by ael-maaz          #+#    #+#             */
+/*   Updated: 2025/01/20 03:01:47 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SCALARCONVERTER_HPP
+#define SCALARCONVERTER_HPP
+
+#include <iostream>
+#include <string>
+
+class ScalarConverter
+{
+	public:
+		ScalarConverter(void);
+		ScalarConverter(ScalarConverter const & src);
+		~ScalarConverter(void);
+		ScalarConverter const & operator=(ScalarConverter const & src);
+		static void convert(std::string var);
+		
+};
+
+
+#endif
