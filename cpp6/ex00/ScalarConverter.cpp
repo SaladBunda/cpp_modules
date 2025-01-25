@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:14:03 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/25 10:54:31 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/01/25 15:52:47 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ ScalarConverter::~ScalarConverter(void)
 {
 	return ;
 }
-int	fcmp(const char *s1, const char *s2)
+int	fcmp(std::string s1, std::string s2)
 {
 	int	i;
 
 	i = 0;
-	while ((s1[i] != '\0' || s2[i] != '\0'))
+	while (i < s1.size() || i < s2.size())
 	{
-		if ((unsigned char)s1[i] > (unsigned char)s2[i])
+		if (static_cast<unsigned char>(s1[i]) > static_cast<unsigned char>(s2[i]))
 			return (1);
-		else if ((unsigned char)s1[i] < (unsigned char)s2[i])
+		else if (static_cast<unsigned char>(s1[i]) < static_cast<unsigned char>(s2[i]))
 			return (-1);
 		i++;
 	}
@@ -188,7 +188,6 @@ void ScalarConverter::convert(std::string var)
 	}
 	else
 	{
-		std::cout << "call atoi" << std::endl;
 		int error = 0;
 		int num = ft_atoi((char *)var.c_str(),&error);
 		if(error == 1)
@@ -197,6 +196,8 @@ void ScalarConverter::convert(std::string var)
 		{
 			if(num < 33 || num > 126)
 				std::cout << "char: Non Displayable" << std::endl;
+			else
+				std::cout << "char: " << "'"<<static_cast<char>(num) << "'" <<std::endl;
 			std::cout << "int: " <<num << std::endl;
 			float numf = static_cast<float>(num);
 			double numd = static_cast<double>(num);
