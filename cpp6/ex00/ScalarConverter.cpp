@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:14:03 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/21 11:00:39 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/01/25 10:54:31 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,20 @@ int	fcmp(const char *s1, const char *s2)
 	return (0);
 }
 
-int	ft_atoi(char *s, int *error)
+
+int is_num(std::string var)
+{
+	int i = 0;
+	while(var[i])
+	{
+		if(var[i] < '0' || var[i] > '9')
+			return 1;
+		i++;
+	}
+	return 0;
+}
+
+int	ft_atoi(const char *s, int *error)
 {
 	int					i;
 	int					sign;
@@ -100,17 +113,18 @@ int test_side(std::string var)
 {
 	int end;
 	int start = var.find('.') + 1;
+	int error = 0;
+
 	if(var.back() == 'f')
 		end = var.length()- var.find('.') - 2;
 	else
 		end = var.length()- var.find('.') - 1;
-		
-	
 	std::string first = var.substr(0,var.find('.'));
 	std::string seconds = var.substr(start,end);
 
-	int error = 0;
-	ft_atoi((char*) first.c_str(), &error);
+	ft_atoi(first.c_str(), &error);
+	if(is_num(seconds) == 1)
+		return 1;
 	ft_atoi((char*) seconds.c_str(), &error);
 	if(error == 1)
 	{
@@ -128,7 +142,11 @@ void ScalarConverter::convert(std::string var)
 		return ;
 	if(var.find('.') != var.npos)//if there is a dot present in the string
 	{
-		test_side(var);
+		if(test_side(var) == 1)
+		{
+			std::cout << "invalid number" << std::endl;
+			return ;
+		}
 		std::string afterpoint = var.substr(var.find('.') + 1);
 		std::cout <<afterpoint << std::endl;
 		if(afterpoint.find('.') != afterpoint.npos || afterpoint == "")
