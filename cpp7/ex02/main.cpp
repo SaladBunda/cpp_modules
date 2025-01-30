@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Iter.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 23:29:38 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/30 07:59:09 by ael-maaz         ###   ########.fr       */
+/*   Created: 2025/01/30 05:32:02 by ael-maaz          #+#    #+#             */
+/*   Updated: 2025/01/30 07:56:50 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-#define ITER_HPP
+#include "Array.hpp"
+#include "Array.tpp"
 
-
-template < typename T>
-void iter(T array[], int len, void(*f)(T const &))
+void ll(void)
 {
-	for(int i = 0; i < len ;i++)
-		f(array[i]);
+	system("leaks array");
 }
 
-template <typename T>
-void inc(T & element)
+int main()
 {
-	element++;
+	atexit(ll);
+	Array<int> t= Array<int>(10);
+	// std::cout << t[0] << std::endl;
+	for(int i = 0; i < 10;i++)
+	{
+		t[i] = i + 20;
+	}
+	for(int i = 0; i < 10;i++)
+	{
+		std::cout << t[i] <<std::endl;
+		// t[i] = i + 20;
+	}
+	// t[0] = 77;
 }
-
-
-#endif
