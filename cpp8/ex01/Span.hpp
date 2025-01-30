@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:34:47 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/30 13:53:44 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:50:45 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,33 @@
 
 #include <iostream>
 #include <algorithm>
-#include <list>
+#include <vector>
+
+
+class SizeTooSmall: public std::exception
+{
+public:
+    const char* what() const throw()
+	{
+        return "Size must be greater than or equal to 2";
+    }
+};
 
 class Span
 {
 	private:
-		std::list<int> lst;
+		unsigned int N;
+		std::vector<int> vec;
 		Span(){};
 	public:
 		Span(unsigned int N);
 		Span(Span const & src);
 		~Span();
-		void addNumber();
+		Span const & operator=(Span const & src);
+		void addNumber(int n);
 		int shortestSpan();
 		int longestSpan();
+		void fillVector();
 };
 
 

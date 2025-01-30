@@ -1,15 +1,15 @@
-SRCS =  main.cpp
+SRCS =  main.cpp Span.cpp
 OBJS = $(SRCS:.cpp=.o)
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = easyfind
+NAME = span
 
 all: $(NAME)
 
 $(NAME): $(OBJS) 
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.cpp easyfind.hpp
+%.o: %.cpp Span.hpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
