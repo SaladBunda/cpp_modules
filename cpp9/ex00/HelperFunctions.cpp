@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 20:34:27 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/04 20:50:19 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/02/04 20:52:36 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@ int parse_date(std::string date)
 		{
 			arr[j] = date.substr(i,j - i + 1);
 			j++;
-			
+			i++;
 		}
 		if(j > 3)
-			return 1;
+			break;
 	}
+	for(int i = 0;i < 3;i++)
+		std::cout << arr[i] <<std::endl;
 	return 1;
 }
 

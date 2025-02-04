@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:50:02 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/04 20:35:09 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/02/04 20:53:25 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ class BitcoinExchange
 
 int convert_date(std::string date);
 
+int parse_date(std::string date);
 
 
 #endif
