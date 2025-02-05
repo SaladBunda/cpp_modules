@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:50:02 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/04 20:53:25 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/02/05 20:25:00 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,15 @@
 #include <map>
 
 
+class OpenFailure : public std::exception
+		{
+			public:
+				const char* what() const throw()
+				{
+					return ("Failed to Open Input file");
+				}
+		};
+
 class BitcoinExchange
 {
 	public:
@@ -29,7 +38,7 @@ class BitcoinExchange
 		BitcoinExchange(BitcoinExchange const & src);
 		~BitcoinExchange();
 		BitcoinExchange const & operator=(BitcoinExchange const & src);
-		int fill_data(void);
+		int fill_data_csv(void);
 		
 		
 	
