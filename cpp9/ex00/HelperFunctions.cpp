@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 20:34:27 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/05 20:40:10 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/02/06 12:21:25 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ bool isLeapYear(int year) {
 int test_date_string(std::string date)
 {
 	int count = 0;
+	std::cout << "Inside test_date_string: " << date << std::endl;
 	for(int i = 0;i < date.size();i++)
 	{
 		if(date[i] != '-' && (date[i]  < '0' || date[i] >'9'))
@@ -60,43 +61,53 @@ int test_array(std::string arr[])
 	return 0;
 }
 
+
+int transform_date(std::string arr[])
+{
+	int num = atoi(arr[0].c_str()) * 100;
+	std::cout << num << std::endl;
+	num += atoi(arr[1].c_str());
+	std::cout << num << std::endl;
+	num =  num * 100 + atoi(arr[2].c_str());
+	std::cout << "sum: " <<num << std::endl;
+	return num;
+}
+
 int parse_date(std::string date)
 {
 	std::string arr[3];
-	if(test_date_string(date) == 1)
-	{
-		std::cout << "Invalid string" << std::endl;
-		return 1;
-	}
 	int j = 0;
 	int k = 0;
 	int i = 0;
+	if(test_date_string(date) == 1)
+		return (std::cout << "Invalid string" << std::endl,1);
 	std::cout << date.size() << " date size\n";
 	for(i =0; i < date.size();i++)
 	{
-		std::cout << "i: " << i << std::endl;
 		if(date[i] == '-')
 		{
-			std::cout << "here\n";
-			arr[j] = date.substr(k,i - k);
-			j++;
+			arr[j++] = date.substr(k,i - k);
 			i++;
 			k = i;
 		}
 	}
 	arr[j] = date.substr(k,i - k + 1);
 	std::cout << i - k + 1 << "test" << std::endl;
-	j++;
-	i++;
-	k = i;
 	if(test_array(arr) == 1)
 	{
 		std::cout << "test array failed" << std::endl;
 		return 1;
 	}
-	for(int i = 0;i < 3;i++)
-		std::cout << i << " " <<arr[i] <<std::endl;
-	return 0;
+	return transform_date(arr);;
+}
+
+
+float get_value(std::string value)
+{
+	float num = atof(value.c_str());
+	if(num<0)
+		throw InvalidValue();
+	return atof(value.c_str());
 }
 
 // int convert_date(std::string date)
@@ -104,7 +115,12 @@ int parse_date(std::string date)
 // 	return 1;
 // }
 
-int parse_line(std::string line)
-{
+// int parse_line(std::string line)
+// {
 	
-}
+// }
+
+// std::string parse_line()
+// {
+	
+// }
