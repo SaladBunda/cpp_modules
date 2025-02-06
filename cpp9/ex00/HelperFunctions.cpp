@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 20:34:27 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/06 12:21:25 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:08:54 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ bool isLeapYear(int year) {
 
 int test_date_string(std::string date)
 {
+	
 	int count = 0;
-	std::cout << "Inside test_date_string: " << date << std::endl;
 	for(int i = 0;i < date.size();i++)
 	{
 		if(date[i] != '-' && (date[i]  < '0' || date[i] >'9'))
@@ -40,8 +40,8 @@ int test_array(std::string arr[])
 	int m_d[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	if(arr[0].size() != 4 || arr[1].size() > 2 || arr[2].size() > 2)
 		return 1;
-	std::cout << arr[0] << " " << arr[1] << " " << arr[2] << std::endl;
-	std::cout << atoi(arr[0].c_str()) <<  atoi(arr[1].c_str()) << atoi(arr[2].c_str()) << std::endl;
+	// std::cout << arr[0] << " " << arr[1] << " " << arr[2] << std::endl;
+	// std::cout << atoi(arr[0].c_str()) <<  atoi(arr[1].c_str()) << atoi(arr[2].c_str()) << std::endl;
 	if(atoi(arr[1].c_str()) <= 12 && atoi(arr[1].c_str()) >= 1)
 	{
 		if(atoi(arr[1].c_str()) == 2 && isLeapYear(atoi(arr[0].c_str())) == 1)
@@ -51,7 +51,7 @@ int test_array(std::string arr[])
 		}
 		else if(atoi(arr[2].c_str()) > m_d[atoi(arr[1].c_str()) - 1] || atoi(arr[2].c_str()) < 1)
 		{
-			std::cout << m_d[atoi(arr[1].c_str()) - 1] << std::endl;
+			// std::cout << m_d[atoi(arr[1].c_str()) - 1] << std::endl;
 			return 1;
 		}
 	}
@@ -64,12 +64,12 @@ int test_array(std::string arr[])
 
 int transform_date(std::string arr[])
 {
-	int num = atoi(arr[0].c_str()) * 100;
-	std::cout << num << std::endl;
-	num += atoi(arr[1].c_str());
-	std::cout << num << std::endl;
+	int num = atoi(arr[0].c_str());
+	// std::cout << num << std::endl;
+	num = num * 100 + atoi(arr[1].c_str());
+	// std::cout << num << std::endl;
 	num =  num * 100 + atoi(arr[2].c_str());
-	std::cout << "sum: " <<num << std::endl;
+	// std::cout << num << std::endl;
 	return num;
 }
 
@@ -81,7 +81,6 @@ int parse_date(std::string date)
 	int i = 0;
 	if(test_date_string(date) == 1)
 		return (std::cout << "Invalid string" << std::endl,1);
-	std::cout << date.size() << " date size\n";
 	for(i =0; i < date.size();i++)
 	{
 		if(date[i] == '-')
@@ -92,7 +91,6 @@ int parse_date(std::string date)
 		}
 	}
 	arr[j] = date.substr(k,i - k + 1);
-	std::cout << i - k + 1 << "test" << std::endl;
 	if(test_array(arr) == 1)
 	{
 		std::cout << "test array failed" << std::endl;
@@ -108,6 +106,14 @@ float get_value(std::string value)
 	if(num<0)
 		throw InvalidValue();
 	return atof(value.c_str());
+}
+
+
+std::string trim(std::string str)
+{
+    str.erase(0, str.find_first_not_of(" \t\n\r\f\v"));
+    str.erase(str.find_last_not_of(" \t\n\r\f\v") + 1);
+    return str;
 }
 
 // int convert_date(std::string date)

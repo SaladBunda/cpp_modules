@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 18:30:34 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/06 13:54:26 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:53:54 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ int BitcoinExchange::fill_data_csv(void)
 		this->data[date] = get_value(arr[1]);
         line.clear();
     }
-	for (std::map<int, float>::iterator it = this->data.begin(); it != this->data.end(); ++it) {
-        std::cout << "Key: " << it->first << ", Value: " << it->second << "\n";
-    }
+	// for (std::map<int, float>::iterator it = this->data.begin(); it != this->data.end(); ++it) {
+    //     std::cout << "Key: " << it->first << ", Value: " << it->second << "\n";
+    // }
 	return 0;
 }
 
@@ -88,26 +88,55 @@ int BitcoinExchange::get_from_file(std::string filename)
 	int date;
 	std::getline(input,line, '\n');
 
+		int pipe_count;
 	while(std::getline(input,line, '\n'))
     {
+		pipe_count = 0;
 		
 		for(int i = 0;i < line.size();i++)
 		{
-			if(line[i] == ',')
+			if(line[i] == '|')
 			{
+				pipe_count++;
 				arr[0] = line.substr(0,i);
 				arr[1] = line.substr(i+1);
 				break ;
 			}
 		}
+		if(pipe_count != 1)
+		{
+			std::cout << "Error: bad input => " << line << std::endl;
+			continue;
+		}
+		arr[0] = trim(arr[0]);
+		arr[1] = trim(arr[1]);
 		date = parse_date(arr[0]);
 		if(date == 1)
-			return 1;
-		this->data[date] = get_value(arr[1]);
+		{
+			std::cout << "date Error: bad input => " << arr[0] << std::endl;
+		}
+		else
+		{
+			if(get_value(arr[1]) == 1)
+			{
+				
+			}
+			std::map<int,float>::iterator it = this->data.lower_bound(date);
+
+			// If the exact key does not exist and `it` is not the first element, get the previous key
+			if (it == this->data.begin()) {
+				std::cout << "No smaller key found.\n";
+			} else {
+				--it;  // Move iterator to the previous key
+				std::cout << "Closest smaller key to " << date << " is " << it->first << " -> " << it->second << "\n";
+			}
+			// this->data[date] = get_value(arr[1]);
+			
+		} 
         line.clear();
     }
-	for (std::map<int, float>::iterator it = this->data.begin(); it != this->data.end(); ++it) {
-        std::cout << "Key: " << it->first << ", Value: " << it->second << "\n";
-    }
+	// for (std::map<int, float>::iterator it = this->data.begin(); it != this->data.end(); ++it) {
+    //     std::cout << "Key: " << it->first << ", Value: " << it->second << "\n";
+    // }
 	return 0;
 }
