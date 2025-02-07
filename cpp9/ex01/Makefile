@@ -1,15 +1,15 @@
-SRCS =  main.cpp BitcoinExchange.cpp HelperFunctions.cpp
+SRCS =  main.cpp RPN.cpp HelperFunctions.cpp
 OBJS = $(SRCS:.cpp=.o)
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = btc
+NAME = RPN
 
 all: $(NAME)
 
 $(NAME): $(OBJS) 
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.cpp BitcoinExchange.hpp
+%.o: %.cpp RPN.hpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
@@ -17,5 +17,6 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME) 
+
 
 re: fclean all
