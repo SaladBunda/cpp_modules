@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 20:34:27 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/06 17:08:54 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:42:16 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,28 @@ int parse_date(std::string date)
 }
 
 
-float get_value(std::string value)
+float get_value(std::string value, int option)
 {
-	float num = atof(value.c_str());
+	double num = atof(value.c_str());
+	if(option == 1)
+	{
+		if(num > 1000)
+		{
+			std::cout  << "Error: value too big"<< std::endl;
+			return -1;
+		}
+	}
 	if(num<0)
-		throw InvalidValue();
-	return atof(value.c_str());
+	{
+		std::cout  << "Error: value cant be negative" << std::endl;
+		return -1;
+	}
+	if(num > 2147483647)
+	{
+		std::cout  << "Error: value too big"<< std::endl;
+		return -1;
+	}
+	return num;
 }
 
 

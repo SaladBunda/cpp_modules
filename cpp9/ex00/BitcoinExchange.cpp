@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 18:30:34 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/06 17:53:54 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:43:13 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int BitcoinExchange::fill_data_csv(void)
 		date = parse_date(arr[0]);
 		if(date == 1)
 			return 1;
-		this->data[date] = get_value(arr[1]);
+		this->data[date] = get_value(arr[1], 0);
         line.clear();
     }
 	// for (std::map<int, float>::iterator it = this->data.begin(); it != this->data.end(); ++it) {
@@ -88,7 +88,7 @@ int BitcoinExchange::get_from_file(std::string filename)
 	int date;
 	std::getline(input,line, '\n');
 
-		int pipe_count;
+	int pipe_count;
 	while(std::getline(input,line, '\n'))
     {
 		pipe_count = 0;
@@ -117,21 +117,25 @@ int BitcoinExchange::get_from_file(std::string filename)
 		}
 		else
 		{
-			if(get_value(arr[1]) == 1)
+			if(get_value(arr[1], 1) == -1)
 			{
-				
+				continue;
 			}
 			std::map<int,float>::iterator it = this->data.lower_bound(date);
-
-			// If the exact key does not exist and `it` is not the first element, get the previous key
-			if (it == this->data.begin()) {
-				std::cout << "No smaller key found.\n";
-			} else {
-				--it;  // Move iterator to the previous key
-				std::cout << "Closest smaller key to " << date << " is " << it->first << " -> " << it->second << "\n";
-			}
-			// this->data[date] = get_value(arr[1]);
 			
+			if (it == this->data.begin())
+			{
+				std::cout << "No smaller key found.\n";
+			}
+			else if (it != this->data.end() && it->first == date)
+			{
+    			std::cout << arr[0] << " => " << arr[1] << " = " << it->second * get_value(arr[1], 1) << std::endl;
+			} 	
+			else
+			{
+				--it;  
+				std::cout << arr[0] << " => " <<arr[1] << " = " << /* this->data[date] */ it->second * get_value(arr[1], 1) << std::endl;
+			}			
 		} 
         line.clear();
     }
