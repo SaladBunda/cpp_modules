@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HelperFunctions.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 17:13:38 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/08 17:21:43 by ael-maaz         ###   ########.fr       */
+/*   Created: 2025/02/09 20:20:00 by ael-maaz          #+#    #+#             */
+/*   Updated: 2025/02/09 20:20:34 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RPN.hpp"
+#include "PmergeMe.hpp"
 
-
-
-int main(int ac, char **av)
+int TestArguments(std::string str)
 {
-	if(ac == 2)
-	{
-		RPN main;
-
-		std::string arg = av[1];
-		if(main.ParseArg(arg) == 1)
-			std::cout << "Error\n";
-	}
-	else
-		std::cout << "Usage: ./RPN \"expression\"" << std::endl;
+		
 }
