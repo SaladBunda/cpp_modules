@@ -1,4 +1,4 @@
-SRCS =  main.cpp PmergeMe.cpp
+SRCS =  main.cpp PmergeMe.cpp HelperFunctions.cpp
 OBJS = $(SRCS:.cpp=.o)
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98

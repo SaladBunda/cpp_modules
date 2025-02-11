@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 16:21:54 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/09 17:31:10 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/02/11 22:15:12 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,14 @@ PmergeMe::~PmergeMe(void)
 int PmergeMe::FillArray(char **av)
 {
 	std::string word;
-	for(int i = 0;av[i];i++)
+	for(int i = 1;av[i];i++)
 	{
 		
 		std::stringstream s(av[i]);
 		while(s >> word)
 		{
+			if(TestArguments(word,this->vec) == 1)
+				return 1;
 			this->vec.push_back(word);
 		}
 		
