@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:34:16 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/09 17:30:53 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/02/15 21:41:45 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ int main(int ac, char **av)
 {
 	(void) ac;
 	PmergeMe main;
-	main.FillArray(av);
+	if(main.FillArray(av) == 1)
+		return 1;
+	int power = main.Merge();
+	main.Insert(power / 2);
 	
 }
