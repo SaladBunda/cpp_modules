@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 16:21:54 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/15 23:43:33 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/02/17 21:53:25 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,9 +122,30 @@ int PmergeMe::Merge()
 }
 
 
+
+
+// Function to print a vector of vector of strings (C++98 compatible)
+void printVector(const std::vector<std::vector<std::string> >& vec, const std::string& name) {
+    std::cout << "Contents of " << name << ":\n";
+    if (vec.empty()) {
+        std::cout << "Empty\n";
+        return;
+    }
+    for (size_t i = 0; i < vec.size(); ++i) {
+        std::cout << "Group " << (i + 1) << ": ";
+        for (size_t j = 0; j < vec[i].size(); ++j) {
+            std::cout << vec[i][j] << " ";
+        }
+        std::cout << "\n";
+    }
+    std::cout << "\n";
+}
+
+
 int PmergeMe::Insert(int power)
 {
 	int num_of_pairs;
+	power = 2;
 	num_of_pairs = this->vec.size() / power;
 	std::cout << num_of_pairs << std::endl;
 	std::cout << power <<std::endl;
@@ -143,6 +164,7 @@ int PmergeMe::Insert(int power)
 		}
 	}
 
+	int num_of_fulls = 0;
 	for(int i = 0; i < num_of_pairs;i++)
 	{
 		for(std::vector<std::string>::iterator it = arr[i].vect.begin();it != arr[i].vect.end();it++)
@@ -151,7 +173,10 @@ int PmergeMe::Insert(int power)
 		}
 		std::cout << std::endl;
 		if(arr[i].vect.size() == static_cast<unsigned int>(power))
+		{
 			arr[i].info = FULL;
+			num_of_fulls++;
+		}
 		else
 			arr[i].info = NOT_FULL;
 	}
@@ -159,9 +184,41 @@ int PmergeMe::Insert(int power)
 	std::vector<std::vector <std::string> > main;
 	std::vector<std::vector <std::string> > pend;
 	std::vector<std::vector <std::string> > odd;
+	std::vector<std::vector <std::string> > extra;
 	
+	for(int i = 0; i < num_of_pairs;i++)
+	{
+		if(arr[i].info == FULL)
+		{
+			if(num_of_fulls % 2 == 0)
+			{
+				if(i == 0 || i == 1 || i % 2 != 0)
+					main.push_back(arr[i].vect);
+				else if(i % 2 == 0)
+					pend.push_back(arr[i].vect);		
+			}
+			else
+			{
+				if(i == 0 || i == 1)
+					main.push_back(arr[i].vect);
+				else if(i % 2 == 0 && i < num_of_fulls - 1)
+					pend.push_back(arr[i].vect);
+				else if(i % 2 != 0)
+					main.push_back(arr[i].vect);
+				else
+					odd.push_back(arr[i].vect);
+			}
+				
+		}
+		else
+			extra.push_back(arr[i].vect);
+			
+	}
 	
-	
+	printVector(main, "main");
+    printVector(pend, "pend");
+    printVector(odd, "odd");
+    printVector(extra, "extra");
 	// if()
 	return 1;
 }
