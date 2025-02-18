@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:41:34 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/15 22:13:18 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/02/18 21:13:25 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_help
 {
 	int info;
 	std::vector<std::string> vect;
+	std::string label;
 } t_help;
 
 class PmergeMe
@@ -40,9 +41,10 @@ class PmergeMe
 		int FillArray(char **av);
 		int Merge();
 		int Insert(int power);
+		int Sort(std::vector<t_help> main, std::vector<t_help> pend,std::vector<t_help> odd,std::vector<t_help> extra);
 };
 
 int TestArguments(std::string str, std::vector<std::string> vec);
-
+std::string giveLabel(int i);
 
 #endif

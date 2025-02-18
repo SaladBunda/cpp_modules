@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:20:00 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/11 22:14:47 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/02/18 21:22:11 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,22 @@ int TestArguments(std::string str, std::vector<std::string> vec)
 			}
 		}
 	}
-	return 0;
-		
+	return 0;		
 }
+
+std::string intToString(int number)
+{
+    std::stringstream ss;
+    ss << number;
+    return ss.str();
+}
+
+std::string giveLabel(int i)
+{
+	int pairNumber = (i / 2) + 1;
+	if(i % 2 ==0)
+		return ("b" + intToString(pairNumber));
+	else
+		return("a" +  intToString(pairNumber));
+}
+
