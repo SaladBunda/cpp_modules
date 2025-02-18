@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 16:21:54 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/18 22:41:41 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/02/18 22:47:25 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,26 @@ int PmergeMe::Sort(std::vector<t_help> main, std::vector<t_help> pend,std::vecto
 	int prevjacob = 1;
 	int currentjacob  = 3;
 	int tmp;
+	if(pend.size() == 0)
+	{
+		this->vec.clear();
+		for(unsigned int i = 0;i <main.size();i++)
+		{
+			for(std::vector<std::string>::iterator it = main[i].vect.begin();it != main[i].vect.end();it++)
+			{
+				if((*it).length() > 0)
+					this->vec.push_back(*it);
+				
+			}
+		}
+		for(std::vector<std::string>::iterator it = extra[i].vect.begin();it != extra[i].vect.end();it++)
+		{
+				if((*it).length() > 0)
+					this->vec.push_back(*it);
+				
+		}
+		return 0;
+	}
 	while(i >= 0)
 	{
 		if(i < static_cast<unsigned int>(currentjacob - prevjacob))
