@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:41:34 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/18 21:13:25 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/02/19 23:17:00 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,10 @@ class PmergeMe
 
 int TestArguments(std::string str, std::vector<std::string> vec);
 std::string giveLabel(int i);
+int nextJacobsthal(int prev, int prevPrev);
+int findMatchInMain(const std::vector<t_help>& main, const std::string& bLabel);
+void printVector(const std::vector<t_help>& vec, const std::string& name);
+void PushToVector(std::vector<t_help>& main, std::vector<std::string>& vec);
+
 
 #endif

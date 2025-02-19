@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 20:34:27 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/07 16:42:16 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/02/19 22:23:46 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int test_date_string(std::string date)
 {
 	
 	int count = 0;
-	for(int i = 0;i < date.size();i++)
+	for(unsigned int i = 0;i < date.size();i++)
 	{
 		if(date[i] != '-' && (date[i]  < '0' || date[i] >'9'))
 			return 1;
 	}
-	for(int i = 0;i < date.size();i++)
+	for(unsigned int i = 0;i < date.size();i++)
 	{
 		if(date[i] == '-')
 			count++;
@@ -78,7 +78,7 @@ int parse_date(std::string date)
 	std::string arr[3];
 	int j = 0;
 	int k = 0;
-	int i = 0;
+	unsigned int i = 0;
 	if(test_date_string(date) == 1)
 		return (std::cout << "Invalid string" << std::endl,1);
 	for(i =0; i < date.size();i++)

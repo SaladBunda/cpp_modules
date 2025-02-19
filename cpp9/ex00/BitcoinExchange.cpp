@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 18:30:34 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/07 16:43:13 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/02/19 22:23:15 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int BitcoinExchange::fill_data_csv(void)
 	while(std::getline(input,line, '\n'))
     {
 		
-		for(int i = 0;i < line.size();i++)
+		for(unsigned int i = 0;i < line.size();i++)
 		{
 			if(line[i] == ',')
 			{
@@ -93,7 +93,7 @@ int BitcoinExchange::get_from_file(std::string filename)
     {
 		pipe_count = 0;
 		
-		for(int i = 0;i < line.size();i++)
+		for(unsigned int i = 0;i < line.size();i++)
 		{
 			if(line[i] == '|')
 			{
