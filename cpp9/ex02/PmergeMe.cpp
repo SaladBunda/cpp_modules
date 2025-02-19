@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 16:21:54 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/19 23:44:38 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/02/19 23:45:59 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,7 +307,6 @@ int PmergeMe::Sort(std::vector<t_help> main, std::vector<t_help> pend,std::vecto
 		if(swapped == 0)
 		{
 			main.insert(main.begin() + k,odd.back());
-				// odd.erase(odd.begin() + k);
 			odd.pop_back();
 			std::cout << "sawpped after loop" << std::endl;
 		}
