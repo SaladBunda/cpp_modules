@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 16:21:54 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/19 23:45:59 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/02/21 17:55:19 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ int PmergeMe::FillArray(char **av)
 
 int PmergeMe::Merge()
 {
-	std::cout << "Starting elements: ";
-	for(unsigned int i = 0; i < this->vec.size();i++)
-	{
-			std::cout << this->vec[i]<< " " ;
-	}
+	// std::cout << "Starting elements: ";
+	// for(unsigned int i = 0; i < this->vec.size();i++)
+	// {
+	// 		std::cout << this->vec[i]<< " " ;
+	// }
 	std::cout << std::endl;
 	int num_of_pairs;
 	int power = 1;
@@ -114,12 +114,12 @@ int PmergeMe::Merge()
 		power *= 2;
         num_of_pairs = this->vec.size() / power;
 	}
-	std::cout << "End of Merge step: ";
-	for(unsigned int i = 0; i < this->vec.size();i++)
-		{
-			std::cout << this->vec[i]<< " " ;
-		}
-		std::cout << std::endl;
+	// std::cout << "End of Merge step: ";
+	// for(unsigned int i = 0; i < this->vec.size();i++)
+	// 	{
+	// 		std::cout << this->vec[i]<< " " ;
+	// 	}
+	// 	std::cout << std::endl;
 
 	return power;
 }
@@ -129,56 +129,56 @@ int PmergeMe::Merge()
 
 
 
-int PmergeMe::Sort(std::vector<t_help> main, std::vector<t_help> pend,std::vector<t_help> odd,std::vector<t_help> extra)
+int PmergeMe::Sort(std::vector<t_help> main, std::vector<t_help> pend,std::vector<t_help> odd,std::vector<t_help> extra, int power)
 {
 	unsigned int i = pend.size();
 	int prevjacob = 1;
 	int currentjacob  = 3;
 	int tmp;
-	std::cout << "Inside Sort" << std::endl;
-	if(pend.size() == 0)
-	{
-		std::cout << "Here" << std::endl;
-		this->vec.clear();
-		for(unsigned int i = 0;i <main.size();i++)
-		{
-			for(std::vector<std::string>::iterator it = main[i].vect.begin();it != main[i].vect.end();it++)
-			{
-				if((*it).length() > 0)
-					this->vec.push_back(*it);
+	// std::cout << "Inside Sort" << std::endl;
+	// if(pend.size() == 0)
+	// {
+	// 	std::cout << "Here" << std::endl;
+	// 	this->vec.clear();
+	// 	for(unsigned int i = 0;i <main.size();i++)
+	// 	{
+	// 		for(std::vector<std::string>::iterator it = main[i].vect.begin();it != main[i].vect.end();it++)
+	// 		{
+	// 			if((*it).length() > 0)
+	// 				this->vec.push_back(*it);
 				
-			}
-		}
-		i = 0;
-		std::cout << "Here" << std::endl;
+	// 		}
+	// 	}
+	// 	i = 0;
+	// 	std::cout << "Here" << std::endl;
 
-		// this->vec.push_back(odd.back().vect.back());
-		if(!odd.empty())
-		{
-			for(std::vector<std::string>::iterator it = odd[0].vect.begin();it != odd[0].vect.end();it++)
-			{
-					if((*it).length() > 0)
-						this->vec.push_back(*it);
+	// 	// this->vec.push_back(odd.back().vect.back());
+	// 	if(!odd.empty())
+	// 	{
+	// 		for(std::vector<std::string>::iterator it = odd[0].vect.begin();it != odd[0].vect.end();it++)
+	// 		{
+	// 				if((*it).length() > 0)
+	// 					this->vec.push_back(*it);
 					
-			}
-			std::cout << "Here" << std::endl;
+	// 		}
+	// 		std::cout << "Here" << std::endl;
 			
-		}
+	// 	}
 
-		if(!extra.empty())
-		{
-			for(std::vector<std::string>::iterator it = extra[i].vect.begin();it != extra[i].vect.end();it++)
-			{
-					if((*it).length() > 0)
-						this->vec.push_back(*it);
+	// 	if(!extra.empty())
+	// 	{
+	// 		for(std::vector<std::string>::iterator it = extra[i].vect.begin();it != extra[i].vect.end();it++)
+	// 		{
+	// 				if((*it).length() > 0)
+	// 					this->vec.push_back(*it);
 					
-			}
-			std::cout << "Here" << std::endl;
+	// 		}
+	// 		std::cout << "Here" << std::endl;
 			
-		}
+	// 	}
 
-		return 0;
-	}
+	// 	return 0;
+	// }
 	while(i > 0)
 	{
 		if(i < static_cast<unsigned int>(currentjacob - prevjacob))
@@ -187,18 +187,18 @@ int PmergeMe::Sort(std::vector<t_help> main, std::vector<t_help> pend,std::vecto
 			unsigned int k = 0;
 			while(pend.size() > 0)
 			{
-				std::cout << "Begin" << std::endl;
+				// std::cout << "Begin" << std::endl;
 			
 				for(k = 0;k < main.size();k++)
 				{
 					if(std::atoi(pend.back().vect.back().c_str()) < std::atoi(main[k].vect.back().c_str()))
 					{
-						std::cout << "found bigger number we swap: " <<pend.back().vect.back() << " and "<< main[k].vect.back() << std::endl;
+						// std::cout << "found bigger number we swap: " <<pend.back().vect.back() << " and "<< main[k].vect.back() << std::endl;
 						main.insert(main.begin() + k,pend.back());
-						std::cout << "after insertion" << std::endl;
-						printVector(main,"main");
+						// std::cout << "after insertion" << std::endl;
+						// printVector(main,"main");
 						pend.pop_back();
-						printVector(pend,"pend");
+						// printVector(pend,"pend");
 						
 						swapped = 1;
 						break;
@@ -208,35 +208,36 @@ int PmergeMe::Sort(std::vector<t_help> main, std::vector<t_help> pend,std::vecto
 				{
 					main.insert(main.begin() + k,pend.back());
 					pend.pop_back();
-					std::cout << "sawpped after loop" << std::endl;
+					// std::cout << "sawpped after loop" << std::endl;
 				}
 			}
 			
 			//sorting odd
-
-			for(k = 0;k < main.size();k++)
+			if(!odd.empty())
 			{
-				if(std::atoi(odd.back().vect.back().c_str()) < std::atoi(main[k].vect.back().c_str()))
+				for(k = 0;k < main.size();k++)
 				{
-					std::cout << "found bigger number we swap: " <<odd.back().vect.back() << " and "<< main[k].vect.back() << std::endl;
-					main.insert(main.begin() + k,odd.back());
-					std::cout << "after insertion" << std::endl;
-					printVector(main,"main");
+					if(std::atoi(odd.back().vect.back().c_str()) < std::atoi(main[k].vect.back().c_str()))
+					{
+						// std::cout << "found bigger number we swap: " <<odd.back().vect.back() << " and "<< main[k].vect.back() << std::endl;
+						main.insert(main.begin() + k,odd.back());
+						// std::cout << "after insertion" << std::endl;
+						// printVector(main,"main");
 						odd.pop_back();
-					printVector(odd,"odd");
-					
-					swapped = 1;
-					break;
+						// printVector(odd,"odd");
+						
+						swapped = 1;
+						break;
+					}
+				}
+				if(swapped == 0)
+				{
+					main.insert(main.begin() + k,odd.back());
+					odd.pop_back();
+						// odd.erase(odd.begin() + k);
+					// std::cout << "sawpped after loop" << std::endl;
 				}
 			}
-			if(swapped == 0)
-			{
-				main.insert(main.begin() + k,odd.back());
-					// odd.erase(odd.begin() + k);
-				odd.pop_back();
-				std::cout << "sawpped after loop" << std::endl;
-			}
-
 			//end of sorting odd
 		}
 		else
@@ -244,38 +245,33 @@ int PmergeMe::Sort(std::vector<t_help> main, std::vector<t_help> pend,std::vecto
 			for(int j = currentjacob - prevjacob;j > 0 ;j--)
 			{
 				int working_index = j - 1;
-				std::cout << "index inside pend: " << working_index << std::endl;
+				// std::cout << "index inside pend: " << working_index << std::endl;
 				std::string match = pend[working_index].label;
-				std::cout << "current jacob: " << currentjacob << " current element label: " << match <<std::endl;
+				// std::cout << "current jacob: " << currentjacob << " current element label: " << match <<std::endl;
 				int matched_index = findMatchInMain(main,match); 
-				std::cout << "found index in main: " <<matched_index << std::endl;
+				// std::cout << "found index in main: " <<matched_index << std::endl;
 				int swapped = 0;
 				int k = 0;
 				for(k = 0;k < matched_index;k++)
 				{
 					if(std::atoi(pend[working_index].vect.back().c_str()) < std::atoi(main[k].vect.back().c_str()))
 					{
-						std::cout << "found bigger number we swap: " <<pend[working_index].vect.back() << " and "<< main[k].vect.back() << std::endl;
+						// std::cout << "found bigger number we swap: " <<pend[working_index].vect.back() << " and "<< main[k].vect.back() << std::endl;
 						main.insert(main.begin() + k,pend[working_index]);
 						pend.erase(pend.begin() + working_index);
 						swapped = 1;
 						break ;
 					}
-					// else
-					// 	std::cout <<"impossible" << std::endl;
-									
-	
 				}
 				if(swapped == 0)
 				{
 					main.insert(main.begin() + k,pend[working_index]);
 						pend.erase(pend.begin() + working_index);
-					std::cout << "sawpped after loop" << std::endl;
+					// std::cout << "sawpped after loop" << std::endl;
 				}
-				// i--;
-				std::cout << "TEST-----------" << std::endl;
-				printVector(pend,"pend");
-				printVector(main,"main");
+				// std::cout << "TEST-----------" << std::endl;
+				// printVector(pend,"pend");
+				// printVector(main,"main");
 				
 			}
 		}
@@ -293,12 +289,12 @@ int PmergeMe::Sort(std::vector<t_help> main, std::vector<t_help> pend,std::vecto
 		{
 			if(std::atoi(odd.back().vect.back().c_str()) < std::atoi(main[k].vect.back().c_str()))
 			{
-				std::cout << "found bigger number we swap: " <<odd.back().vect.back() << " and "<< main[k].vect.back() << std::endl;
+				// std::cout << "found bigger number we swap: " <<odd.back().vect.back() << " and "<< main[k].vect.back() << std::endl;
 				main.insert(main.begin() + k,odd.back());
-				std::cout << "after insertion" << std::endl;
-				printVector(main,"main");
+				// std::cout << "after insertion" << std::endl;
+				// printVector(main,"main");
 					odd.pop_back();
-				printVector(odd,"odd");
+				// printVector(odd,"odd");
 				
 				swapped = 1;
 				break;
@@ -308,13 +304,43 @@ int PmergeMe::Sort(std::vector<t_help> main, std::vector<t_help> pend,std::vecto
 		{
 			main.insert(main.begin() + k,odd.back());
 			odd.pop_back();
-			std::cout << "sawpped after loop" << std::endl;
+			// std::cout << "sawpped after loop" << std::endl;
 		}
 	}
 	if(!extra.empty())
 	{
-		main.push_back(extra.back());
-		extra.pop_back();
+		if(power == 1)
+		{
+			int swapped = 0;
+			unsigned int k = 0;
+			for(k = 0;k < main.size();k++)
+			{
+				if(std::atoi(extra.back().vect.back().c_str()) < std::atoi(main[k].vect.back().c_str()))
+				{
+					// std::cout << "found bigger number we swap: " <<extra.back().vect.back() << " and "<< main[k].vect.back() << std::endl;
+					main.insert(main.begin() + k,extra.back());
+					// std::cout << "after insertion" << std::endl;
+					// printVector(main,"main");
+					extra.pop_back();
+					// printVector(extra,"extra");
+					
+					swapped = 1;
+					break;
+				}
+			}
+			if(swapped == 0)
+			{
+				main.insert(main.begin() + k,extra.back());
+					// extra.erase(extra.begin() + k);
+				extra.pop_back();
+				// std::cout << "sawpped after loop" << std::endl;
+			}
+		}
+		else
+		{
+			main.push_back(extra.back());
+			extra.pop_back();	
+		}
 	}
 	PushToVector(main,this->vec);
 	return 1;
@@ -323,12 +349,10 @@ int PmergeMe::Sort(std::vector<t_help> main, std::vector<t_help> pend,std::vecto
 int PmergeMe::Insert(int power)
 {
 	int num_of_pairs;
-	// power = 2;
 	while(power >= 1)
 	{
 		num_of_pairs = this->vec.size() / power;
-		std::cout << num_of_pairs << std::endl;
-		std::cout << "Power: "<< power << std::endl;
+		// std::cout << "Power: "<< power << std::endl;
 		if(this->vec.size()%power != 0)
 			num_of_pairs++;
 		t_help arr[num_of_pairs];
@@ -390,13 +414,21 @@ int PmergeMe::Insert(int power)
 			else
 				extra.push_back(arr[i]);
 		}
-		printVector(main,"main");
-		printVector(pend,"pend");
-		printVector(odd,"odd");
-		printVector(extra,"extra");
-		this->Sort(main,pend,odd,extra);
+		// printVector(main,"main");
+		// printVector(pend,"pend");
+		// printVector(odd,"odd");
+		// printVector(extra,"extra");
+		this->Sort(main,pend,odd,extra, power);
+		// std::cout <<"After sort: ";
+		// printVector(main,"main");
 		
 		power /= 2;
 	}
+		// printVector(main,"main");
+	// std::time_t end = 
+	// std::cout << "End result: ";
+	// for(std::vector<std::string>::iterator it = this->vec.begin();it != vec.end();it++)
+	// 	std::cout << *it << " "; 
+	// std::cout << std::endl;
 	return 1;
 }
