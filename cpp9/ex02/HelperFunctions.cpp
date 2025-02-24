@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:20:00 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/19 23:16:29 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/02/24 23:24:21 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,64 @@ void PushToVector(std::vector<t_help>& main, std::vector<std::string>& vec)
 				
 			}
 		}
+}
+
+#include <unistd.h>
+
+int recursion(std::vector<t_help>& main, std::vector<t_help>& vector, int start, int end)
+{
+	int middle = (start + end)/2;
+	// std::cout << "biggest Element: " << vector.back().vect.back() << std::endl;
+	// std::cout << "biggest elements at main: " << main[middle].vect.back() << std::endl;
+	// std::cout << "start: " << start << " end: " <<end << std::endl;
+	if(start >= end)
+	{
+		// std::cout << "=Middle: " <<middle << std::endl;
+		if(std::atoi(vector.back().vect.back().c_str()) > std::atoi(main[start].vect.back().c_str()))
+			main.insert(main.begin() + start + 1,vector.back());
+		else
+			main.insert(main.begin() + start,vector.back());
+		vector.pop_back();
+		return 1;
+	}
+	if(std::atoi(vector.back().vect.back().c_str()) < std::atoi(main[middle].vect.back().c_str()))
+	{
+		// std::cout << "<Middle: " <<middle << std::endl;
+		end = middle -1;
+		// usleep(70000);
+		recursion(main,vector,start,end);
+	}
+	else if(std::atoi(vector.back().vect.back().c_str()) > std::atoi(main[middle].vect.back().c_str()))
+	{
+		// std::cout << ">Middle: " <<middle << std::endl;
+		start = middle + 1;
+		// usleep(70000);
+		recursion(main,vector,start,end);
+
+
+	}
+
+	return 0;
+}
+
+void BinarySearchSort(std::vector<t_help>& main, std::vector<t_help>& vector)
+{
+	int start = 0;
+	int end = main.size() - 1;
+	recursion(main,vector,start,end);
+	// for(k = 0;k < main.size();k++)
+	// {
+	// 	if(std::atoi(odd.back().vect.back().c_str()) < std::atoi(main[k].vect.back().c_str()))
+	// 	{
+	// 		main.insert(main.begin() + k,odd.back());
+	// 		odd.pop_back();
+	// 		swapped = 1;
+	// 		break;
+	// 	}
+	// }
+	// if(swapped == 0)
+	// {
+	// 	main.insert(main.begin() + k,odd.back());
+	// 	odd.pop_back();
+	// }
 }

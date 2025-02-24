@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:41:34 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/21 17:54:50 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/02/24 22:09:05 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int nextJacobsthal(int prev, int prevPrev);
 int findMatchInMain(const std::vector<t_help>& main, const std::string& bLabel);
 void printVector(const std::vector<t_help>& vec, const std::string& name);
 void PushToVector(std::vector<t_help>& main, std::vector<std::string>& vec);
+void BinarySearchSort(std::vector<t_help>& main, std::vector<t_help>& vector);
 
 
 #endif
