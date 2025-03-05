@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:41:34 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/03/05 23:49:04 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/03/05 23:51:56 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void BinarySearchSortVec(std::vector<t_vec>& main, std::vector<t_vec>& vector, i
 int recursion2Vec(std::vector<t_vec>& main, std::vector<t_vec>& vector, int index, int start, int end);
 
 int TestArgumentsDeque(std::string str, std::deque<int> vec);
-int nextJacobsthal(int prev, int prevPrev);
+// int nextJacobsthal(int prev, int prevPrev);
 int findMatchInMainDeque(const std::deque<t_deque>& main, const std::string& bLabel);
 void printVectorDeque(const std::deque<t_deque>& vec, const std::string& name);
 void PushToVectorDeque(std::deque<t_deque>& main, std::deque<int>& vec);
