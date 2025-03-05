@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 16:21:54 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/03/05 02:53:11 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/03/05 23:48:56 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ PmergeMe::~PmergeMe(void)
 	std::cout << "Destructor called" << std::endl;
 }
 
-int PmergeMe::FillArray(char **av)
+int PmergeMe::FillArrayVec(char **av)
 {
 	std::string word;
 	for(int i = 1;av[i];i++)
@@ -53,7 +53,7 @@ int PmergeMe::FillArray(char **av)
 		// {
 			// std::cout << "Word :-" << word << "-\n";
 			word = av[i];
-			if(TestArguments(word,this->vec) == 1)
+			if(TestArgumentsVec(word,this->vec) == 1)
 				return 1;
 			// if(word.length() > 0)
 				this->vec.push_back(std::atoi(word.c_str()));
@@ -64,7 +64,7 @@ int PmergeMe::FillArray(char **av)
 }
 
 
-int PmergeMe::Merge()
+int PmergeMe::MergeVec()
 {
 	int num_of_pairs;
 	int power = 1;
@@ -106,36 +106,53 @@ int PmergeMe::Merge()
 	return power;
 }
 
-int PmergeMe::Sort(std::vector<t_help> main, std::vector<t_help> pend,std::vector<t_help> odd,std::vector<t_help> extra, int power)
+int PmergeMe::SortVec(std::vector<t_vec> main, std::vector<t_vec> pend,std::vector<t_vec> odd,std::vector<t_vec> extra, int power)
 {
+	// printVector(main,"main");
+	// printVector(pend,"pend");
+	// printVector(odd,"odd");
+	// printVector(extra,"extra");
+	
 	unsigned int i = pend.size();
 	int tmp = 0;
 	int jacob[]={1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731, 5461, 10923, 21845, 43691, 87381, 174763, 349525};
 	int prevjacob = jacob[tmp++];
-	int currentjacob  = jacob[tmp++];
+	int currentjacob  = jacob[tmp];
+	
 	while(i > 0)
 	{
-		std::cout << currentjacob << " " << prevjacob << std::endl;
+		// std::cout << "Size of Pend: " <<i << std::endl;
+		// std::cout << currentjacob << " " << prevjacob << std::endl;
 		if(i < static_cast<unsigned int>(currentjacob - prevjacob))
 		{
+			// std::cout << "no jacobsthall\n";
 			while(pend.size() > 0)
 			{
 				std::string to_find = pend.back().label;
-				int match = findMatchInMain(main,to_find);
-				BinarySearchSort(main,pend, match);
+				int match = findMatchInMainVec(main,to_find);
+				BinarySearchSortVec(main,pend, match);
 			}
 			if(!odd.empty())
-				BinarySearchSort(main,odd,main.size() - 1);
+				BinarySearchSortVec(main,odd,main.size() - 1);
 		}
 		else
 		{
+			// std::cout << "jacobsthall\n";
+
 			for(int j = currentjacob - prevjacob;j > 0 ;j--)
 			{
+				// std::cout << "J: " << j << std::endl;
+				// std::cerr << "Current jacob: " << currentjacob << std::endl;
 				int working_index = j - 1;
 				std::string match = pend[working_index].label;
-				int matched_index = findMatchInMain(main,match); 
-				// BinarySearchSort(main,pend, matched_index);
-				recursion2(main,pend,working_index,0,matched_index);
+				int matched_index = findMatchInMainVec(main,match); 
+				// BinarySearchSortVec(main,pend, matched_index);
+				// std::time_t a1 = std::clock();
+				recursion2Vec(main,pend,working_index,0,matched_index);
+				// std::time_t a2 = std::clock();
+					// std::cout << "Duration of recursion to Vector: " <<static_cast<double>(a2- a1)/ CLOCKS_PER_SEC << std:: endl;
+
+				
 				// int swapped = 0;
 				// int k = 0;
 				// for(k = 0;k < matched_index;k++)
@@ -157,38 +174,44 @@ int PmergeMe::Sort(std::vector<t_help> main, std::vector<t_help> pend,std::vecto
 		}
 		i = pend.size();
 		// tmp = prevjacob;
-		currentjacob = jacob[tmp++];
-		std::cout << currentjacob << std::endl;
-		prevjacob = jacob[tmp++];
-		std::cout << prevjacob << std::endl;
+		prevjacob = currentjacob;
+		// std::cout << "tmp: " << tmp << std::endl; 
+		currentjacob = jacob[++tmp];
+		// std::cout <<jacob[tmp] <<" " << tmp << std::endl;
+		// std::cout << currentjacob << std::endl;
+		// std::cout << prevjacob << std::endl;
 		// currentjacob = nextJacobsthal(currentjacob,tmp);
 	}
 
 	if(!odd.empty())
-		BinarySearchSort(main,odd,main.size() - 1);
+		BinarySearchSortVec(main,odd,main.size() - 1);
 	if(!extra.empty())
 	{
 		if(power == 1)
-			BinarySearchSort(main,extra,main.size() - 1);
+			BinarySearchSortVec(main,extra,main.size() - 1);
 		else
 		{
 			main.push_back(extra.back());
 			extra.pop_back();	
 		}
 	}
-	PushToVector(main,this->vec);
+	// std::time_t begin = std::clock();
+	PushToVectorVec(main,this->vec);
+	// std::time_t finish = std::clock();
+	// std::cout << "Duration of push to Vector: " <<static_cast<double>(finish - begin)/ CLOCKS_PER_SEC << std:: endl;
 	return 1;
 }
 
-int PmergeMe::Insert(int power)
+int PmergeMe::InsertVec(int power)
 {
 	int num_of_pairs;
 	while(power >= 1)
 	{
+		// std::time_t begin = std::clock();
 		num_of_pairs = this->vec.size() / power;
 		if(this->vec.size()%power != 0)
 			num_of_pairs++;
-		t_help arr[num_of_pairs];
+		t_vec arr[num_of_pairs];
 		
 		for(int i = 0;i < num_of_pairs;i++)
 		{
@@ -212,10 +235,10 @@ int PmergeMe::Insert(int power)
 				arr[i].info = NOT_FULL;
 		}
 
-		std::vector<t_help> main;
-		std::vector<t_help> pend;
-		std::vector<t_help> odd;
-		std::vector<t_help> extra;
+		std::vector<t_vec> main;
+		std::vector<t_vec> pend;
+		std::vector<t_vec> odd;
+		std::vector<t_vec> extra;
 		
 		for(int i = 0; i < num_of_pairs;i++)
 		{
@@ -247,10 +270,13 @@ int PmergeMe::Insert(int power)
 			else
 				extra.push_back(arr[i]);
 		}
+		// std::time_t finish = std::clock();
+		
+		// std::cout << "Duration of labeling: " << double(finish - begin)/CLOCKS_PER_SEC << std::endl;
 		this->start = std::clock();
-		this->Sort(main,pend,odd,extra, power);
+		this->SortVec(main,pend,odd,extra, power);
 		this->checkpoint = std::clock();
-		std::cout << "Duration of sort: " << double(this->checkpoint - this->start)/CLOCKS_PER_SEC << std::endl;
+		// std::cout << "Duration of sort: " << double(this->checkpoint - this->start)/CLOCKS_PER_SEC << std::endl;
 		power /= 2;
 	}
 	return 1;

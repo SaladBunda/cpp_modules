@@ -6,13 +6,13 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:20:00 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/03/05 02:42:05 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/03/05 23:50:25 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-int TestArguments(std::string str, std::vector<int> vec)
+int TestArgumentsVec(std::string str, std::vector<int> vec)
 {
 	(void) vec;
 	long	num = std::atol(str.c_str());
@@ -26,17 +26,7 @@ int TestArguments(std::string str, std::vector<int> vec)
 		std:: cout << "Numbers are supposed to be < MAX_INT\n";
 		return 1;
 	}
-	// else
-	// {
-	// 	for(std::vector<int>::iterator it = vec.begin();it!=vec.end();it++)
-	// 	{
-	// 		if(*it == num)
-	// 		{
-	// 			std::cout << "duplicate" << std::endl;
-	// 			return 1;
-	// 		}
-	// 	}
-	// }
+
 	return 0;		
 }
 
@@ -61,7 +51,7 @@ int nextJacobsthal(int prev, int prevPrev)
     return prev + 2 * prevPrev;
 }
 
-int findMatchInMain(const std::vector<t_help>& main, const std::string& bLabel)
+int findMatchInMainVec(const std::vector<t_vec>& main, const std::string& bLabel)
 {
     if (bLabel[0] != 'b') 
         return -1; 
@@ -77,7 +67,7 @@ int findMatchInMain(const std::vector<t_help>& main, const std::string& bLabel)
     return -1; 
 }
 
-void printVector(const std::vector<t_help>& vec, const std::string& name)
+void printVectorVec(const std::vector<t_vec>& vec, const std::string& name)
 {
     std::cout << "Contents of " << name << ":\n";
     if (vec.empty()) {
@@ -95,7 +85,7 @@ void printVector(const std::vector<t_help>& vec, const std::string& name)
     std::cout << "\n";
 }
 
-void PushToVector(std::vector<t_help>& main, std::vector<int>& vec)
+void PushToVectorVec(std::vector<t_vec>& main, std::vector<int>& vec)
 {
 	vec.clear();
 	for(unsigned int i = 0;i <main.size();i++)
@@ -107,7 +97,7 @@ void PushToVector(std::vector<t_help>& main, std::vector<int>& vec)
 		}
 }
 
-int recursion(std::vector<t_help>& main, std::vector<t_help>& vector, int start, int end)
+int recursion(std::vector<t_vec>& main, std::vector<t_vec>& vector, int start, int end)
 {
 	int middle = (start + end)/2;
 	if(start >= end)
@@ -132,7 +122,7 @@ int recursion(std::vector<t_help>& main, std::vector<t_help>& vector, int start,
 	return 0;
 }
 
-void BinarySearchSort(std::vector<t_help>& main, std::vector<t_help>& vector, int end)
+void BinarySearchSortVec(std::vector<t_vec>& main, std::vector<t_vec>& vector, int end)
 {
 	int start = 0;
 	recursion(main,vector,start,end);
@@ -140,7 +130,7 @@ void BinarySearchSort(std::vector<t_help>& main, std::vector<t_help>& vector, in
 }
 
 
-int recursion2(std::vector<t_help>& main, std::vector<t_help>& vector, int index, int start, int end)
+int recursion2Vec(std::vector<t_vec>& main, std::vector<t_vec>& vector, int index, int start, int end)
 {
 	int middle = (start + end)/2;
 	if(start >= end)
@@ -155,12 +145,12 @@ int recursion2(std::vector<t_help>& main, std::vector<t_help>& vector, int index
 	if(vector[index].vect.back() < main[middle].vect.back())
 	{
 		end = middle -1;
-		recursion2(main,vector,index,start,end);
+		recursion2Vec(main,vector,index,start,end);
 	}
 	else if(vector[index].vect.back() > main[middle].vect.back())
 	{
 		start = middle + 1;
-		recursion2(main,vector,index,start,end);
+		recursion2Vec(main,vector,index,start,end);
 	}
 	return 0;
 }
