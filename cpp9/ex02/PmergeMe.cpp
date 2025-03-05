@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 16:21:54 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/24 23:25:29 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/03/05 02:53:11 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,16 @@ int PmergeMe::FillArray(char **av)
 	for(int i = 1;av[i];i++)
 	{
 		
-		std::stringstream s(av[i]);
-		while(s >> word)
-		{
+		// std::stringstream s(av[i]);
+		// while(s >> word)
+		// {
+			// std::cout << "Word :-" << word << "-\n";
+			word = av[i];
 			if(TestArguments(word,this->vec) == 1)
 				return 1;
-			this->vec.push_back(word);
-		}
+			// if(word.length() > 0)
+				this->vec.push_back(std::atoi(word.c_str()));
+		// }
 		
 	}
 	return 0;
@@ -63,12 +66,6 @@ int PmergeMe::FillArray(char **av)
 
 int PmergeMe::Merge()
 {
-	std::cout << "Starting elements: ";
-	for(unsigned int i = 0; i < this->vec.size();i++)
-	{
-			std::cout << this->vec[i]<< " " ;
-	}
-	std::cout << std::endl;
 	int num_of_pairs;
 	int power = 1;
 	num_of_pairs = this->vec.size() / power;
@@ -76,21 +73,21 @@ int PmergeMe::Merge()
 	{
 		if(this->vec.size()%power != 0)
 			num_of_pairs++;
-		std::vector<std::string> arr[num_of_pairs];
+		std::vector<int> arr[num_of_pairs];
 		for(int i = 0;i < num_of_pairs;i++)
 		{
 			
 			for(int j = 0;j < power;j++)
 			{
-				if(this->vec[power * i + j].length() > 0)
+				if(static_cast<size_t>(power *i + j) < this->vec.size())
 					arr[i].push_back(this->vec[power * i + j]) ;
-			}
+			}			
 		}
 		for(int i = 0;i < num_of_pairs;i++)
 		{
 			if(i + 1 < num_of_pairs)
 			{
-				if(std::atoi(arr[i].back().c_str()) > std::atoi(arr[i + 1].back().c_str()) && arr[i+1].size() == (unsigned int) power)
+				if(arr[i].back() > arr[i + 1].back() && arr[i+1].size() == (unsigned int) power)
 					std::swap(arr[i],arr[i+1]);
 				i++;
 			}
@@ -100,12 +97,8 @@ int PmergeMe::Merge()
 		this->vec.clear();
 		for(int i = 0;i < num_of_pairs;i++)
 		{
-			for(std::vector<std::string>::iterator it = arr[i].begin();it != arr[i].end();it++)
-			{
-				if((*it).length() > 0)
+			for(std::vector<int>::iterator it = arr[i].begin();it != arr[i].end();it++)
 					this->vec.push_back(*it);
-				
-			}
 		}
 		power *= 2;
         num_of_pairs = this->vec.size() / power;
@@ -116,72 +109,23 @@ int PmergeMe::Merge()
 int PmergeMe::Sort(std::vector<t_help> main, std::vector<t_help> pend,std::vector<t_help> odd,std::vector<t_help> extra, int power)
 {
 	unsigned int i = pend.size();
-	int prevjacob = 1;
-	int currentjacob  = 3;
-	int tmp;
-
-				// std::cout << "1\n"; 
-	
-				
-				// printVector(pend,"pend");
-				// printVector(pend,"odd");
-				// printVector(pend,"extra");
-				printVector(main,"main");
-				
-				printVector(pend,"pend");
-				printVector(odd,"odd");
-				printVector(extra,"extra");
+	int tmp = 0;
+	int jacob[]={1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731, 5461, 10923, 21845, 43691, 87381, 174763, 349525};
+	int prevjacob = jacob[tmp++];
+	int currentjacob  = jacob[tmp++];
 	while(i > 0)
 	{
+		std::cout << currentjacob << " " << prevjacob << std::endl;
 		if(i < static_cast<unsigned int>(currentjacob - prevjacob))
 		{
-			// int swapped = 0;
-			// unsigned int k = 0;
 			while(pend.size() > 0)
 			{
-				// for(k = 0;k < main.size();k++)
-				// {
-				// 	// std::cout <<"pend element: "<<pend.back().vect.back().c_str()<<" with labbel: "<<pend.back().label<<std::endl;
-				// 	if(std::atoi(pend.back().vect.back().c_str()) < std::atoi(main[k].vect.back().c_str()))
-				// 	{
-				// 		main.insert(main.begin() + k,pend.back());
-				// 		pend.pop_back();
-				// 		swapped = 1;
-				// 		break;
-				// 	}
-				// }
-				// if(swapped == 0)
-				// {
-				// 	main.insert(main.begin() + k,pend.back());
-				// 	pend.pop_back();
-				// }
-				
-				BinarySearchSort(main,pend);
-			
-
+				std::string to_find = pend.back().label;
+				int match = findMatchInMain(main,to_find);
+				BinarySearchSort(main,pend, match);
 			}
 			if(!odd.empty())
-			{
-				// for(k = 0;k < main.size();k++)
-				// {
-				// 	if(std::atoi(odd.back().vect.back().c_str()) < std::atoi(main[k].vect.back().c_str()))
-				// 	{
-				// 		main.insert(main.begin() + k,odd.back());
-				// 		odd.pop_back();
-				// 		swapped = 1;
-				// 		break;
-				// 	}
-				// }
-				// if(swapped == 0)
-				// {
-				// 	main.insert(main.begin() + k,odd.back());
-				// 	odd.pop_back();
-				// }
-				
-				BinarySearchSort(main,odd);
-				
-
-			}
+				BinarySearchSort(main,odd,main.size() - 1);
 		}
 		else
 		{
@@ -190,80 +134,42 @@ int PmergeMe::Sort(std::vector<t_help> main, std::vector<t_help> pend,std::vecto
 				int working_index = j - 1;
 				std::string match = pend[working_index].label;
 				int matched_index = findMatchInMain(main,match); 
-				int swapped = 0;
-				int k = 0;
-				for(k = 0;k < matched_index;k++)
-				{
-					if(std::atoi(pend[working_index].vect.back().c_str()) < std::atoi(main[k].vect.back().c_str()))
-					{
-						main.insert(main.begin() + k,pend[working_index]);
-						pend.erase(pend.begin() + working_index);
-						swapped = 1;
-						break ;
-					}
-				}
-				if(swapped == 0)
-				{
-					main.insert(main.begin() + k,pend[working_index]);
-						pend.erase(pend.begin() + working_index);
-				}
+				// BinarySearchSort(main,pend, matched_index);
+				recursion2(main,pend,working_index,0,matched_index);
+				// int swapped = 0;
+				// int k = 0;
+				// for(k = 0;k < matched_index;k++)
+				// {
+				// 	if(pend[working_index].vect.back() < main[k].vect.back())
+				// 	{
+				// 		main.insert(main.begin() + k,pend[working_index]);
+				// 		pend.erase(pend.begin() + working_index);
+				// 		swapped = 1;
+				// 		break ;
+				// 	}
+				// }
+				// if(swapped == 0)
+				// {
+				// 	main.insert(main.begin() + k,pend[working_index]);
+				// 		pend.erase(pend.begin() + working_index);
+				// }
 			}
 		}
 		i = pend.size();
-		tmp = prevjacob;
-		prevjacob = currentjacob;
-		currentjacob = nextJacobsthal(currentjacob,tmp);
+		// tmp = prevjacob;
+		currentjacob = jacob[tmp++];
+		std::cout << currentjacob << std::endl;
+		prevjacob = jacob[tmp++];
+		std::cout << prevjacob << std::endl;
+		// currentjacob = nextJacobsthal(currentjacob,tmp);
 	}
 
 	if(!odd.empty())
-	{
-		// unsigned int k;
-		// int swapped = 0;
-		// for(k = 0;k < main.size();k++)
-		// {
-		// 	if(std::atoi(odd.back().vect.back().c_str()) < std::atoi(main[k].vect.back().c_str()))
-		// 	{
-		// 		main.insert(main.begin() + k,odd.back());
-		// 		odd.pop_back();
-		// 		swapped = 1;
-		// 		break;
-		// 	}
-		// }
-		// if(swapped == 0)
-		// {
-		// 	main.insert(main.begin() + k,odd.back());
-		// 	odd.pop_back();
-		// }
-		
-		BinarySearchSort(main,odd);
-		
-	}
+		BinarySearchSort(main,odd,main.size() - 1);
 	if(!extra.empty())
 	{
 		if(power == 1)
-		{
-				
-			BinarySearchSort(main,extra);
-			
-			// int swapped = 0;
-			// unsigned int k = 0;
-			// for(k = 0;k < main.size();k++)
-			// {
-			// 	if(std::atoi(extra.back().vect.back().c_str()) < std::atoi(main[k].vect.back().c_str()))
-			// 	{
-			// 		main.insert(main.begin() + k,extra.back());
-			// 		extra.pop_back();
-			// 		swapped = 1;
-			// 		break;
-			// 	}
-			// }
-			// if(swapped == 0)
-			// {
-			// 	main.insert(main.begin() + k,extra.back());
-			// 	extra.pop_back();
-			// }
-			
-		}
+			BinarySearchSort(main,extra,main.size() - 1);
 		else
 		{
 			main.push_back(extra.back());
@@ -289,7 +195,7 @@ int PmergeMe::Insert(int power)
 			
 			for(int j = 0;j < power;j++)
 			{
-				if(this->vec[power * i + j].length() > 0)
+				if(static_cast<size_t>(power *i + j) < this->vec.size())
 					arr[i].vect.push_back(this->vec[power * i + j]) ;
 			}
 		}
@@ -341,8 +247,10 @@ int PmergeMe::Insert(int power)
 			else
 				extra.push_back(arr[i]);
 		}
-
+		this->start = std::clock();
 		this->Sort(main,pend,odd,extra, power);
+		this->checkpoint = std::clock();
+		std::cout << "Duration of sort: " << double(this->checkpoint - this->start)/CLOCKS_PER_SEC << std::endl;
 		power /= 2;
 	}
 	return 1;

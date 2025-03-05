@@ -6,30 +6,37 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:20:00 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/02/24 23:24:21 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/03/05 02:42:05 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-int TestArguments(std::string str, std::vector<std::string> vec)
+int TestArguments(std::string str, std::vector<int> vec)
 {
+	(void) vec;
+	long	num = std::atol(str.c_str());
 	if(str.find_first_not_of("0123456789") != str.npos)
 	{
 		std::cout << "Found forbidden shit" << std::endl;
 		return 1;
 	}
-	else
+	else if(num> INT_MAX)
 	{
-		for(std::vector<std::string>::iterator it = vec.begin();it!=vec.end();it++)
-		{
-			if(*it == str)
-			{
-				std::cout << "duplicate" << std::endl;
-				return 1;
-			}
-		}
+		std:: cout << "Numbers are supposed to be < MAX_INT\n";
+		return 1;
 	}
+	// else
+	// {
+	// 	for(std::vector<int>::iterator it = vec.begin();it!=vec.end();it++)
+	// 	{
+	// 		if(*it == num)
+	// 		{
+	// 			std::cout << "duplicate" << std::endl;
+	// 			return 1;
+	// 		}
+	// 	}
+	// }
 	return 0;		
 }
 
@@ -88,76 +95,72 @@ void printVector(const std::vector<t_help>& vec, const std::string& name)
     std::cout << "\n";
 }
 
-void PushToVector(std::vector<t_help>& main, std::vector<std::string>& vec)
+void PushToVector(std::vector<t_help>& main, std::vector<int>& vec)
 {
 	vec.clear();
 	for(unsigned int i = 0;i <main.size();i++)
 		{
-			for(std::vector<std::string>::iterator it = main[i].vect.begin();it != main[i].vect.end();it++)
+			for(std::vector<int>::iterator it = main[i].vect.begin();it != main[i].vect.end();it++)
 			{
-				if((*it).length() > 0)
 					vec.push_back(*it);
-				
 			}
 		}
 }
 
-#include <unistd.h>
-
 int recursion(std::vector<t_help>& main, std::vector<t_help>& vector, int start, int end)
 {
 	int middle = (start + end)/2;
-	// std::cout << "biggest Element: " << vector.back().vect.back() << std::endl;
-	// std::cout << "biggest elements at main: " << main[middle].vect.back() << std::endl;
-	// std::cout << "start: " << start << " end: " <<end << std::endl;
 	if(start >= end)
 	{
-		// std::cout << "=Middle: " <<middle << std::endl;
-		if(std::atoi(vector.back().vect.back().c_str()) > std::atoi(main[start].vect.back().c_str()))
+		if(vector.back().vect.back() > main[start].vect.back())
 			main.insert(main.begin() + start + 1,vector.back());
 		else
 			main.insert(main.begin() + start,vector.back());
 		vector.pop_back();
 		return 1;
 	}
-	if(std::atoi(vector.back().vect.back().c_str()) < std::atoi(main[middle].vect.back().c_str()))
+	if(vector.back().vect.back() < main[middle].vect.back())
 	{
-		// std::cout << "<Middle: " <<middle << std::endl;
 		end = middle -1;
-		// usleep(70000);
 		recursion(main,vector,start,end);
 	}
-	else if(std::atoi(vector.back().vect.back().c_str()) > std::atoi(main[middle].vect.back().c_str()))
+	else if(vector.back().vect.back() > main[middle].vect.back())
 	{
-		// std::cout << ">Middle: " <<middle << std::endl;
 		start = middle + 1;
-		// usleep(70000);
 		recursion(main,vector,start,end);
-
-
 	}
-
 	return 0;
 }
 
-void BinarySearchSort(std::vector<t_help>& main, std::vector<t_help>& vector)
+void BinarySearchSort(std::vector<t_help>& main, std::vector<t_help>& vector, int end)
 {
 	int start = 0;
-	int end = main.size() - 1;
 	recursion(main,vector,start,end);
-	// for(k = 0;k < main.size();k++)
-	// {
-	// 	if(std::atoi(odd.back().vect.back().c_str()) < std::atoi(main[k].vect.back().c_str()))
-	// 	{
-	// 		main.insert(main.begin() + k,odd.back());
-	// 		odd.pop_back();
-	// 		swapped = 1;
-	// 		break;
-	// 	}
-	// }
-	// if(swapped == 0)
-	// {
-	// 	main.insert(main.begin() + k,odd.back());
-	// 	odd.pop_back();
-	// }
+
+}
+
+
+int recursion2(std::vector<t_help>& main, std::vector<t_help>& vector, int index, int start, int end)
+{
+	int middle = (start + end)/2;
+	if(start >= end)
+	{
+		if(vector[index].vect.back() > main[start].vect.back())
+			main.insert(main.begin() + start + 1,vector[index]);
+		else
+			main.insert(main.begin() + start,vector[index]);
+		vector.erase(vector.begin() + index);
+		return 1;
+	}
+	if(vector[index].vect.back() < main[middle].vect.back())
+	{
+		end = middle -1;
+		recursion2(main,vector,index,start,end);
+	}
+	else if(vector[index].vect.back() > main[middle].vect.back())
+	{
+		start = middle + 1;
+		recursion2(main,vector,index,start,end);
+	}
+	return 0;
 }

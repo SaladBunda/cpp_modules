@@ -16,15 +16,3 @@ Test 15: OK
 Test 16: OK
 Test 17: OK
 Test 18: OK
-Test 19: OK
-Test 20: OK
-Test 21: OK
-Test 22: OK
-Test 23: OK
-Test 24: OK
-Test 25: OK
-Test 26: OK
-Test 27: OK
-Test 28: OK
-Test 29: OK
-Test 30: OK

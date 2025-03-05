@@ -10,7 +10,7 @@ clear
 # rm -rf *.txt
 
 # Define test sizes
-TEST_SIZES=(3) #
+TEST_SIZES=(3 5 7 10 20 50 100 200 1000 3000 5000) #
  # NUMBERS=$(shuf -i 0-32768000 -n "$size" | tr "\n" " ")
 
 CLEAN_OUTPUT=true
@@ -20,9 +20,9 @@ for size in "${TEST_SIZES[@]}"; do
     OUTPUT_FILE="test$size.txt"
     > "$OUTPUT_FILE"  # Clear previous output
     IS_SUCCESS=1
-    for ((i=1; i<=50; i++)); do
-        NUMBERS=$(jot -r "$size" 1 10000000 | tr "\n" " ")
-        ./PmergeMe $NUMBERS #  > /dev/null 2>&1
+    for ((i=1; i<=30; i++)); do
+        NUMBERS=$(jot -r "$size" 1 1000000000 | tr "\n" " ")
+        ./PmergeMe $NUMBERS   > /dev/null 2>&1
         if [ $? -eq 0 ]; then
             echo "Test $i: OK" >> "$OUTPUT_FILE"
         else
