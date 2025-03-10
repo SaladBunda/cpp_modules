@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HelperFunctions.cpp                                :+:      :+:    :+:   */
+/*   HelperFunctionsVec.cpp                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:20:00 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/03/05 23:50:25 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/03/10 16:53:38 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,19 @@ std::string intToString(int number)
     return ss.str();
 }
 
-std::string giveLabel(int i)
-{
-	int pairNumber = (i / 2) + 1;
-	if(i % 2 ==0)
-		return ("b" + intToString(pairNumber));
-	else
-		return("a" +  intToString(pairNumber));
-}
+// std::string giveLabel(int i)
+// {
+// 	int pairNumber = (i / 2) + 1;
+// 	if(i % 2 ==0)
+// 		return ("b" + intToString(pairNumber));
+// 	else
+// 		return("a" +  intToString(pairNumber));
+// }
 
-int nextJacobsthal(int prev, int prevPrev)
-{
-    return prev + 2 * prevPrev;
-}
+// int nextJacobsthal(int prev, int prevPrev)
+// {
+//     return prev + 2 * prevPrev;
+// }
 
 int findMatchInMainVec(const std::vector<t_vec>& main, const std::string& bLabel)
 {

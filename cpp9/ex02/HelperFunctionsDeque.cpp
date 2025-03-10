@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:51:31 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/03/05 23:52:59 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/03/10 16:54:33 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int TestArgumentsDeque(std::string str, std::deque<int> vec)
 	return 0;		
 }
 
-std::string intToString(int number)
+std::string intToString2(int number)
 {
     std::stringstream ss;
     ss << number;
@@ -41,9 +41,9 @@ std::string giveLabel(int i)
 {
 	int pairNumber = (i / 2) + 1;
 	if(i % 2 ==0)
-		return ("b" + intToString(pairNumber));
+		return ("b" + intToString2(pairNumber));
 	else
-		return("a" +  intToString(pairNumber));
+		return("a" +  intToString2(pairNumber));
 }
 
 int nextJacobsthal(int prev, int prevPrev)
