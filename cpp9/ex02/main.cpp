@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:34:16 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/03/05 23:48:38 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/03/11 18:01:08 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,30 +50,39 @@ int main(int ac, char **av)
 	if(main.FillArrayVec(av) == 1)
 		return 1;
 	main.checkpoint = std::clock();
-	// std::cout << "Duration of parsing: " << double(main.checkpoint - main.start)/CLOCKS_PER_SEC << std::endl;	// std::cout << "Array after fill: ";
-	// 	for(std::vector<int>::iterator it = main.vec.begin();it != main.vec.end();it++)
-	// 	std::cout << *it << " "; 
-	// std::cout << std::endl;
 	std::vector<int> tmp;
 	for (size_t i = 0; i < main.vec.size(); ++i)
 		tmp.push_back(main.vec[i]);
 	main.start = main.checkpoint;
 	int power = main.MergeVec();
 	main.checkpoint = std::clock();
+main.start = main.checkpoint;
+	main.InsertVec(power / 2);
+	main.checkpoint = std::clock();
+	std::time_t a2 = std::clock();
+	
+	std::cout << "End result: ";
+	std::cout << "Duration of insertion: " << double(a2 - a1)/CLOCKS_PER_SEC << std::endl;	
+	std::time_t b1 = std::clock();
+	if(main.FillArrayDeque(av) == 1)
+		return 1;
+		int power2 = main.MergeDeque();
+		main.InsertDeque(power2 /2);
+	std::time_t b2 = std::clock();
+	std::cout << "Duration of insertion of deque: " << double(b2 - b1)/CLOCKS_PER_SEC << std::endl;	
+	
+	// std::cout << "Array after fill: ";
+	// std::cout << "Duration of parsing: " << double(main.checkpoint - main.start)/CLOCKS_PER_SEC << std::endl;	// std::cout << "Array after fill: ";
+	// 	for(std::vector<int>::iterator it = main.vec.begin();it != main.vec.end();it++)
+	// 	std::cout << *it << " "; 
+	// std::cout << std::endl;
 	// std::cout << "Duration of merging: " << double(main.checkpoint - main.start)/CLOCKS_PER_SEC << std::endl;	// std::cout << "Array after fill: ";
 
 	// std::cout << "Start insertion result: ";
 	// 	for(std::vector<int>::iterator it = main.vec.begin();it != main.vec.end();it++)
 	// 	std::cout << *it << " "; 
 	// std::cout << std::endl;
-main.start = main.checkpoint;
-	main.InsertVec(power / 2);
-	main.checkpoint = std::clock();
-	std::time_t a2 = std::clock();
 	// std::cout << "Duration of insertion: " << double(main.checkpoint - main.start)/CLOCKS_PER_SEC << std::endl;	// std::cout << "Array after fill: ";
-	
-	std::cout << "End result: ";
-	std::cout << "Duration of insertion: " << double(a2 - a1)/CLOCKS_PER_SEC << std::endl;	// std::cout << "Array after fill: ";
 	// for(std::vector<int>::iterator it = main.vec.begin();it != main.vec.end();it++)
 	// 	std::cout << *it << " "; 
 	// std::cout << std::endl;

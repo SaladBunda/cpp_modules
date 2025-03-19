@@ -16,11 +16,6 @@
 #include <iostream>
 #include <stdexcept>
 
-
-
-
-
-
 class Bureaucrat
 {
 	private:

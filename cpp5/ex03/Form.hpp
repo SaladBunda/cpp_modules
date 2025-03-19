@@ -57,7 +57,7 @@ class Form
 		Form(void);
 		Form(std::string name, int sign_grade, int exec_grade);
 		Form(Form const & src);
-		~Form(void);
+		virtual ~Form(void);
 		int getSignGrade(void) const;
 		int getExecGrade(void) const;
 		bool getSignStatus(void) const;

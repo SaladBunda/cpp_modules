@@ -23,7 +23,6 @@ int main()
 	{
 		Bureaucrat bunda("bunda",20);
 		Form *form1 = new ShrubberyCreationForm("test");
-		std::cout << "after creation" << std::endl;
 		form1->beSigned(bunda);
 		form1->execute(bunda);
 		Form *form2 = new RobotomyRequestForm("dak zamel");
@@ -36,10 +35,12 @@ int main()
 		form3.execute(bunda);
 		bunda.executeForm(form3);
 		Intern intern1;
-		Form* formtomake = intern1.makeForm("Shrubbery form","zamel");
+		Form* formtomake = intern1.makeForm("Shrubbery form","chakhda");
 		formtomake->beSigned(bunda);
 		formtomake->execute(bunda);
-		
+		delete form1;
+		delete form2;
+		delete formtomake;
 		
 	}
 	catch(std::exception & e)

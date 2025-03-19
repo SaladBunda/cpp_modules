@@ -1,15 +1,15 @@
-SRCS = Form.cpp Bureaucrat.cpp main.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp
+SRCS =  main.cpp MutantStack.cpp
 OBJS = $(SRCS:.cpp=.o)
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = interns
+NAME = mutant
 
 all: $(NAME)
 
 $(NAME): $(OBJS) 
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.cpp Bureaucrat.hpp Form.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp Intern.hpp
+%.o: %.cpp BitcoinExchange.hpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

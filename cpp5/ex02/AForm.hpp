@@ -57,7 +57,7 @@ class AForm
 		AForm(void);
 		AForm(std::string name, int sign_grade, int exec_grade);
 		AForm(AForm const & src);
-		~AForm(void);
+		virtual ~AForm(void);
 		int getSignGrade(void) const;
 		int getExecGrade(void) const;
 		bool getSignStatus(void) const;

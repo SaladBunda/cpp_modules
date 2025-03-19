@@ -62,7 +62,9 @@ Form* Intern::makeForm(std::string name, std::string target)
     std::string option[] = {"Presidential pardon","Shrubbery form","Robotomy form"};
     int i = 0;
     while(name != option[i] && i<4)
+	{
         i++;
+	}
 	if(i < 4)
     	return (obj.*pointer[i])(target);
 	else

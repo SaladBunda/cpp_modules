@@ -21,8 +21,8 @@ int main()
 		Bureaucrat test("bunda",150);
 		test.Inc();
 		std::cout << test.getGrade() << std::endl;
-		Bureaucrat test2("zamel", 1);
-		test2.Inc();
+		Bureaucrat test2("meh", 1);
+		test2.Dec();
 		std::cout << test2.getGrade() << std::endl;
 		std::cout << test2 << std::endl;
 		

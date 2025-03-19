@@ -22,6 +22,8 @@ int main()
 		// Form c("b28", 151,160);
 		Bureaucrat crat("yassin",50);
 		crat.signForm(a);
+		crat.signForm(a);
+		a.beSigned(crat);
 		a.beSigned(crat);
 		
 	}
@@ -29,7 +31,4 @@ int main()
 	{
 		std::cout << e.what() << std::endl;
 	}
-	// Bureaucrat crat("bunda", 51);
-	// a.beSigned(crat);
-	// crat.signForm(a);
 }
