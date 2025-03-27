@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 02:10:27 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/20 12:41:42 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/03/26 17:41:47 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class ScalarConverter
 		~ScalarConverter(void);
 		ScalarConverter const & operator=(ScalarConverter const & src);
 	public:
-		static void convert(std::string var);
+		static void Convert(std::string var);
 		
 };
 

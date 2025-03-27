@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 13:17:32 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/25 15:25:16 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/03/26 17:24:15 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Base::~Base(void)
 
 Base * generate(void)
 {
-	std::srand(std::time(nullptr));
+	std::srand(std::time(0));
     int choice = std::rand() % 3;
 	if(choice == 0)
 	{

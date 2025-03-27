@@ -6,7 +6,7 @@
 /*   By: ael-maaz <ael-maaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:14:03 by ael-maaz          #+#    #+#             */
-/*   Updated: 2025/01/25 15:52:47 by ael-maaz         ###   ########.fr       */
+/*   Updated: 2025/03/27 00:49:21 by ael-maaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,25 +121,63 @@ int test_side(std::string var)
 		end = var.length()- var.find('.') - 1;
 	std::string first = var.substr(0,var.find('.'));
 	std::string seconds = var.substr(start,end);
-
+	int i = 0;
+	while(seconds[i])
+	{
+		if(seconds[i] < '0' || seconds[i] > '9')
+			return 1;
+		i++;
+	}
+	
+	if(var.back() == 'f' && seconds[0] == '\0')
+		return 1;
 	ft_atoi(first.c_str(), &error);
 	if(is_num(seconds) == 1)
 		return 1;
-	ft_atoi((char*) seconds.c_str(), &error);
 	if(error == 1)
 	{
-		std::cout << "ko" << std::endl;
 		return 1;
 	}
-	std::cout << "ok" << std::endl;
 	return 0;
 }
 
+int test_char(std::string c)
+{
+	if((c[0] < '0' || c[0] > '9') && c[0] < 127)
+		return static_cast<int>(c[0]);
+	else
+		return -1;
+}
 
-void ScalarConverter::convert(std::string var)
+void ScalarConverter::Convert(std::string var)
 {
 	if(pretest(var) == 0)
 		return ;
+	else if(var.length() == 1)
+	{
+		if(test_char(var) != -1)
+		{
+			int num = test_char(var);
+		
+			if(num < 32 || num > 126)
+				std::cout << "char: Non Displayable" << std::endl;
+			else
+				std::cout << "char: " << "'"<<static_cast<char>(num) << "'" <<std::endl;
+			std::cout << "int: " <<num << std::endl;
+			float numf = static_cast<float>(num);
+			double numd = static_cast<double>(num);
+			std::cout << std::fixed << std::setprecision(1);
+			std::cout << "float: " << numf << "f" << std::endl;
+			std::cout << "double: " << numd << std::endl;
+			return ;
+		
+		}
+	}
+	else if(var.length() == 0)
+	{
+		std::cout << "Invalid num\n";
+		return ;
+	}	
 	if(var.find('.') != var.npos)//if there is a dot present in the string
 	{
 		if(test_side(var) == 1)
@@ -159,27 +197,31 @@ void ScalarConverter::convert(std::string var)
 		{
 			float floatnum = static_cast<float>(number);
 			int num = static_cast<int>(number);
-			if(num < 33 || num > 126)
-					std::cout << "char: Non Displayable" << std::endl;
+			if(num < 0 || num > 127)
+				std::cout << "char: Impossible\n";
+			else if(num < 33 || num > 126)
+				std::cout << "char: Non Displayable" << std::endl;
 			else
 				std::cout << "char: " << "'"<<static_cast<char>(num) << "'" <<std::endl;
 			std::cout << "int: " <<num << std::endl;
 			float numf = static_cast<float>(floatnum);
 			double numd = static_cast<double>(floatnum);
-			std::cout << std::fixed << std::setprecision(10);
+			std::cout << std::fixed << std::setprecision((afterpoint.length() - 1));
 			std::cout << "float: " << numf<< "f" << std::endl;
 			std::cout << "double: " << numd << std::endl;
 		}
 		else
 		{
 			int num = static_cast<int>(number);
-			if(num < 33 || num > 126)
-					std::cout << "char: Non Displayable" << std::endl;
+			if(num < 0 || num > 127)
+				std::cout << "char: Impossible\n";
+			else if(num < 33 || num > 126)
+				std::cout << "char: Non Displayable" << std::endl;
 			else
 				std::cout << "char: " << "'"<<static_cast<char>(num) << "'" <<std::endl;
 			std::cout << "int: " <<num << std::endl;
 			float numf = static_cast<float>(number);
-			std::cout << std::fixed << std::setprecision(10);
+			std::cout << std::fixed << std::setprecision((afterpoint.length()));
 			std::cout << "float: " << numf<< "f" << std::endl;
 			std::cout << "double: " << number << std::endl;
 		}
@@ -194,7 +236,9 @@ void ScalarConverter::convert(std::string var)
 			std::cout << "invalid num" << std::endl;
 		else
 		{
-			if(num < 33 || num > 126)
+			if(num < 0 || num > 127)
+				std::cout << "char: Impossible\n";
+			if(num < 32 || num > 126)
 				std::cout << "char: Non Displayable" << std::endl;
 			else
 				std::cout << "char: " << "'"<<static_cast<char>(num) << "'" <<std::endl;
